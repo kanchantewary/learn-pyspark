@@ -40,5 +40,7 @@ df2.printSchema()
 
 df2.dtypes
 
+df2.write.format("com.databricks.spark.csv").option('header',True).save('/home/user/workarea/projects/pyspark-kt-01/tests/out/city')
+
 #-------------------------------------------------------------------------------------------------------------------------------------------------------
 
