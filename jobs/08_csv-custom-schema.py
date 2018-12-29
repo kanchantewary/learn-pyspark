@@ -6,7 +6,7 @@ from pyspark.sql.types import *  #required to use StructType, to define schema
 
 #create spark session, refer to config parameters for more elaboration
 #spark-submit --packages mysql:mysql-connector-java:8.0.13,org.mongodb.spark:mongo-spark-connector_2.11:2.3.0 pycook2.py
-spark = SparkSession.builder.appName("read csv using custom schema").getOrCreate()
+spark = SparkSession.builder.appName("read csv using custom schema").master("local[3]").getOrCreate()
 
 #create spart context from spark session
 
