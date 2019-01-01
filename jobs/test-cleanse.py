@@ -31,6 +31,9 @@ sc = spark.sparkContext
 sc.setLogLevel("ERROR")
 #sc.setLogLevel("INFO")
 
+#add the module file to resolve the dependencies
+sc.addPyFile("/home/user/workarea/projects/pyspark-kt-01/jobs/python/dq/dq/cleanse.py")
+
 #create rdd manually
 
 #create dataframe from file
