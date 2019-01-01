@@ -18,6 +18,7 @@ srcfilename = config.get(env,'srcfilename')
 #from pyspark import SparkContext, SparkConf
 from pyspark.sql import SparkSession
 from pyspark.sql.types import *  #required to use StructType, to define schema
+from pyspark.sql.functions import udf
 
 spark = SparkSession.builder.appName("run cleansing").getOrCreate()
 
@@ -37,9 +38,12 @@ sc.setLogLevel("ERROR")
 df2 = spark.read.csv(srcdir+srcfilename, header=True)
 df2.show()
 
-#facing error here
-#df2_modified = df2.withColumn("cleansed", cl.passport(passport))
-#df2_modified.show()
+pass_udf = udf(lambda x:cl.passport(x),StringType())
+
+#facing error here --no module named cleanse
+
+df2_modified = df2.withColumn("cleansed", pass_udf(df2.passport))
+df2_modified.show()
 
 df2.dtypes
 
