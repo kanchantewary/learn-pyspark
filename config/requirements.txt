@@ -1,0 +1,6 @@
+#sample requirements.txt
+
+pandas
+numpy
+scikit-learn
+ibm-cos-sdk

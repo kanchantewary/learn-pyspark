@@ -3,6 +3,8 @@
 #from pyspark import SparkContext, SparkConf
 from pyspark.sql import SparkSession
 from pyspark.sql.types import *  #required to use StructType, to define schema
+import os
+from datetime import datetime
 
 #create spark session, refer to config parameters for more elaboration
 #spark-submit --packages mysql:mysql-connector-java:8.0.13,org.mongodb.spark:mongo-spark-connector_2.11:2.3.0 pycook2.py
@@ -40,7 +42,17 @@ df2.printSchema()
 
 df2.dtypes
 
-df2.write.format("com.databricks.spark.csv").option('header',True).save('/home/user/workarea/projects/pyspark-kt-01/tests/out/city')
+#remove existing outdir
+os.system('rm -R /home/user/workarea/projects/pyspark-kt-01/tests/out/city/')
+now = datetime.now()
+
+date = now.strftime('%Y%m%d-%H%M%S')
+
+#now write into file
+df2.write.format("com.databricks.spark.csv").option('header',True).save('/home/user/workarea/projects/pyspark-kt-01/tests/out/city/'+date)
 
 #-------------------------------------------------------------------------------------------------------------------------------------------------------
 
+orders = spark.read.csv('/home/user/Downloads/WA_Sales_Products_2012-14.csv', header=True, inferSchema=True, sep=',',mode='DROPMALFORMED',ignoreLeadingWhiteSpace=True,ignoreTrailingWhiteSpace=True)
+
+orders.show()
