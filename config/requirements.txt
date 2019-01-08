@@ -4,3 +4,5 @@ pandas
 numpy
 scikit-learn
 ibm-cos-sdk
+flask
+flask-wtf

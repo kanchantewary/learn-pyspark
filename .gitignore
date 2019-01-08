@@ -1,2 +1,4 @@
 tests/out/
-ibm-s3-service-credentials.txt
+ibm-s3-service-credentials.*
+.pyc
+venv
