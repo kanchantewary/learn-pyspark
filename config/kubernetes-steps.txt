@@ -1,0 +1,16 @@
+curl -sL https://ibm.biz/idt-installer | bash
+
+
+export KUBECONFIG=/home/user/.bluemix/plugins/container-service/clusters/test-cluster-1/kube-config-mel01-test-cluster-1.yml
+
+#view the cluster details
+ibmcloud ks clusters
+
+#get details of worker node
+ibmcloud ks workers test-cluster-1
+
+#check kubernetes configuration
+echo $KUBECONFIG
+
+#check version
+kubectl version  --short

@@ -6,3 +6,4 @@ scikit-learn
 ibm-cos-sdk
 flask
 flask-wtf
+docker-compose
