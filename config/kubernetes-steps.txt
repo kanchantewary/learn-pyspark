@@ -6,11 +6,26 @@ export KUBECONFIG=/home/user/.bluemix/plugins/container-service/clusters/test-cl
 #view the cluster details
 ibmcloud ks clusters
 
+#list my worker nodes
+kubectl get nodes
+
 #get details of worker node
 ibmcloud ks workers test-cluster-1
+
+#add a name-space
+ibmcloud cr namespace-add 'kt-01'
 
 #check kubernetes configuration
 echo $KUBECONFIG
 
 #check version
 kubectl version  --short
+
+#list ibmcloud installed plug ins
+ibmcloud plugin list
+
+#list namespaces
+
+ibmcloud cr namespace-list
+
+
