@@ -4,6 +4,7 @@ import requests
 
 resp = requests.get('http://127.0.0.1:5000/user/Elvin')
 
+#print the status code
 print(resp.status_code)
 print(resp.headers['content-type'])
 print(resp.encoding)
