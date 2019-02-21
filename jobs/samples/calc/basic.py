@@ -1,7 +1,7 @@
 #sum.py
 
 def sum(arg):
-    total=0
+    total=0 
     for value in arg:
         total+=value
     return total
@@ -18,3 +18,6 @@ def mult(arg):
 def divide(a,b):
     value=a/b
     return value
+
+def func(x):
+    return x+1
