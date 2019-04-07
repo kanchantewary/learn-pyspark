@@ -1,6 +1,17 @@
 #spark certification practice - definitive guide - chapter 9 - data sources
 
+from pyspark.sql import SparkSession
+spark = SparkSession.Builder().appName("chapter7").master("local[3]").getOrCreate()
+
+
 #read csv
+
+spark.read.format("csv")\
+        .option("mode","permissive")\
+        .option("inferSchema","true")\
+        .option("path","")\
+        .schema(someschema)\
+        .load
 
 #write csv
 
