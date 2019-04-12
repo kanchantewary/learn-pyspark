@@ -15,3 +15,9 @@ https://developer.ibm.com/clouddataservices/docs/analytics-engine/get-started/
 ### Feature Engineering
 
 https://machinelearningmastery.com/discover-feature-engineering-how-to-engineer-features-and-how-to-get-good-at-it/
+
+## Certification
+180 minutes, 40 MCQ
+### Preparation
+#### Books
+Spark Definitive Guide
