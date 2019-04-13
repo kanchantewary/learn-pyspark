@@ -21,7 +21,9 @@ https://machinelearningmastery.com/discover-feature-engineering-how-to-engineer-
 ### Preparation
 #### Books
 Spark Definitive Guide
+
 High Performance Spark
+
 PySpark Cookbook
 
 #### Git Repositories
