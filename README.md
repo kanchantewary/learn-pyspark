@@ -31,6 +31,7 @@ https://github.com/vivek-bombatkar/Databricks-Apache-Spark-2X-Certified-Develope
 
 #### RDD
 https://spark.apache.org/docs/2.1.1/api/java/org/apache/spark/rdd/RDD.html
+https://spark.apache.org/docs/1.1.1/api/python/pyspark.rdd.RDD-class.html
 
 #### Other resources
 
