@@ -8,7 +8,27 @@ sc = spark.sparkContext
 
 r1 = spark.range(10).rdd
 
-r2 = sc.textFile("/home/user/workarea/projects/learn-pyspark/data/sample01.txt")
+#below statement would fail if file does not exist
+r2 = sc.textFile("/home/user/workarea/projects/learn-pyspark/data/sampledata/sample01.txt")
+
+#to handle the situation, use below code:
+
+from py4j.protocol import Py4JJavaError
+
+def try_read(path):
+    rdd = sc.textFile(path)
+    try:
+        rdd.first()
+        return rdd
+    except Py4JJavaError as e:
+        print("file does not exist, returning empty rdd")
+        return sc.emptyRDD()
+
+#now, passing a non-existent file path
+rdd = try_read("/home/user/workarea/projects/learn-pyspark/data/sample01.txt")
+
+if rdd.isEmpty():
+    print ("rdd is empty")
 
 #persist sample01 dataset
 
@@ -43,8 +63,8 @@ r5 = sc.parallelize(myCollection, 2) #second parameter is number of partitions
 r5.setName("myWords")
 r5.name()
 
-r6 = sc.wholeTextFiles()
-r7 = sc.pickleFile()
+#r6 = sc.wholeTextFiles()
+#r7 = sc.pickleFile()
 
 #read from URI
 
@@ -57,4 +77,19 @@ r7 = sc.pickleFile()
 
 #saving and loading other hadoop input/output formats
 
+#read multiple files with pattern
 
+r8 = sc.textFile('/home/user/workarea/projects/learn-pyspark/data/sampledata/*.txt')
+
+print(r8.collect())
+
+r9 = sc.wholeTextFiles('/home/user/workarea/projects/learn-pyspark/data/sampledata/')
+
+print(r9.collect())
+
+#but can I read multiple files stored in different places? put multiple paths in double quotes as below
+
+
+r10 = sc.textFile("/home/user/workarea/projects/learn-pyspark/data/sampledata/*.txt,/home/user/workarea/projects/learn-pyspark/data/*.txt")
+
+print(r10.take(10))
