@@ -37,3 +37,5 @@ https://spark.apache.org/docs/1.1.1/api/python/pyspark.rdd.RDD-class.html
 #### Other resources
 
 Sequence file : https://wiki.apache.org/hadoop/SequenceFile
+
+hdfs: http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html
