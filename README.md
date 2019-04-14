@@ -40,6 +40,9 @@ Sequence file : https://wiki.apache.org/hadoop/SequenceFile
 
 hdfs: http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html
 
+External spark packages:
+http://spark-packages.org/,
+
 ### A little bit of Scala
 
 https://www.coursera.org/learn/progfun1
