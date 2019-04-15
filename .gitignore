@@ -3,3 +3,4 @@ ibm-s3-service-credentials.*
 .pyc
 venv
 __pycache__
+data/z1
