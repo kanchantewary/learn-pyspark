@@ -48,6 +48,7 @@ http://blog.madhukaraphatak.com/
 
 http://www.cs.sfu.ca/CourseCentral/732/ggbaker/content/spark.html
 
+https://umbertogriffo.gitbooks.io/apache-spark-best-practices-and-tuning/content/
 
 ### A little bit of Scala
 
