@@ -1,16 +1,15 @@
 # learning pyspark
-## spark session example
-```
-spark-submit sparksession_practice.py
-```
 
 ## Certification
 180 minutes, 40 MCQ
 ### Preparation
 #### Books
 a) Spark Definitive Guide
+
 b) High Performance Spark
+
 c) Learning Spark
+
 d) PySpark Cookbook
 
 #### Git Repositories,books
