@@ -46,6 +46,8 @@ http://spark-packages.org/,
 Blogs:
 http://blog.madhukaraphatak.com/
 
+http://www.cs.sfu.ca/CourseCentral/732/ggbaker/content/spark.html
+
 
 ### A little bit of Scala
 
