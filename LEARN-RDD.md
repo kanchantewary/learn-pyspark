@@ -98,6 +98,7 @@ using custom function:
 ### countApproxDistinct
 
 ### foreach
+difference with map: map accumulates all of the results into a collection, whereas foreach returns nothing. map is usually used when you want to transform a collection of elements with a function, whereas foreach simply executes an action for each element.
 
 ### foreachPartition
 

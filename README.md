@@ -43,6 +43,13 @@ hdfs: http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsU
 External spark packages:
 http://spark-packages.org/,
 
+Blogs:
+http://blog.madhukaraphatak.com/
+
+http://www.cs.sfu.ca/CourseCentral/732/ggbaker/content/spark.html
+
+https://umbertogriffo.gitbooks.io/apache-spark-best-practices-and-tuning/content/
+
 ### A little bit of Scala
 
 https://www.coursera.org/learn/progfun1
