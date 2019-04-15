@@ -39,3 +39,10 @@ https://spark.apache.org/docs/1.1.1/api/python/pyspark.rdd.RDD-class.html
 Sequence file : https://wiki.apache.org/hadoop/SequenceFile
 
 hdfs: http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html
+
+External spark packages:
+http://spark-packages.org/,
+
+### A little bit of Scala
+
+https://www.coursera.org/learn/progfun1
