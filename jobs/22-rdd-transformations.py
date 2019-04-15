@@ -160,6 +160,33 @@ print(z1.getStorageLevel())
 #cache
 #persist
 
+from pyspark.storagelevel import StorageLevel
+
+z1.persist()
+
+print(z1.getStorageLevel())
+
+z1.unpersist()
+
+z1.persist(StorageLevel.DISK_ONLY)
+print(z1.getStorageLevel())
+z1.unpersist()
+
+z1.persist(StorageLevel.MEMORY_ONLY)
+print(z1.getStorageLevel())
+z1.unpersist()
+
+z1.persist(StorageLevel.MEMORY_ONLY_SER)
+print(z1.getStorageLevel())
+z1.unpersist()
+
+z1.persist(StorageLevel.MEMORY_AND_DISK)
+print(z1.getStorageLevel())
+z1.unpersist()
+
+z1.persist(StorageLevel.MEMORY_AND_DISK_SER)
+print(z1.getStorageLevel())
+z1.unpersist()
 
 #pipe RDDs to system commands
 
@@ -200,4 +227,37 @@ z1fold10 = z1.fold(10,lambda x,y:x+y) #initial value would be added to the compu
 print(z1.collect())
 print(f'number of partitions in z1 = {z1.getNumPartitions()}')
 print(f'reduce result={z1sum}, fold result with 0 offset={z1fold}, fold result with 10 initial value={z1fold10}') # 10+(10+0+1+2)+(10+3+4)=40
+
+#coalesce
+
+c1 = sc.parallelize(range(0,10),4)
+print(f'c1 partitions initial = {c1.getNumPartitions()}')
+c2 = c1.coalesce(1)
+print(f'c1 partitions after coalesce = {c2.getNumPartitions()}')
+
+#glom
+
+g1 = sc.parallelize(range(0,10),3)
+
+print(g1.getNumPartitions())
+
+print(g1.collect())
+print('after applying glom function')
+print(g1.glom().collect())
+
+#foreach,foreachpartition
+#import inflect
+
+def num_to_word(n):
+    #p=inflect.engine()
+    #print(p.number_to_word(n))
+    print(n)
+
+g1.foreach(num_to_word)
+g1.foreachPartition(num_to_word)
+
+#aggregate function ***this is difficult one*****
+
+#passing functions
+
 
