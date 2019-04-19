@@ -116,6 +116,11 @@ difference with map: map accumulates all of the results into a collection, where
 
 ### checkpoint
 
+
+### comparison
+
+https://github.com/JerryLead/SparkInternals/blob/master/markdown/english/6-CacheAndCheckpoint.md
+
 ### getCheckpointFile
 
 ### getNumPartitions
