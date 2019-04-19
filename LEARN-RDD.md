@@ -1,5 +1,9 @@
 # learn RDD - Resilient Distributed Datasets
 
+## about
+
+RDDs are immutable, distributed (partitioned) collection of data. The partitions may be computed on different nodes of the cluster. It can be created in 3 ways, namely a) load from an external dataset b) parallelize a collection (list) c) transforming another RDD
+
 ## create
 
 ### create from a text file
