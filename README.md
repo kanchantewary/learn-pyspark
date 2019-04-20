@@ -23,7 +23,7 @@ d) PySpark Cookbook
 
 #### RDD
 
-See [RDD notes](https://github.com/kanchantewary/learn-pyspark/LEARN-RDD.md)
+See [RDD notes](LEARN-RDD.md)
 
 [And programming guides](https://spark.apache.org/docs/2.1.1/api/java/org/apache/spark/rdd/RDD.html)
 
