@@ -13,6 +13,8 @@ c) Learning Spark
 d) PySpark Cookbook
 
 #### Git Repositories,books
+https://github.com/JerryLead/SparkInternals
+
 https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/
 
 https://umbertogriffo.gitbooks.io/apache-spark-best-practices-and-tuning/content/
