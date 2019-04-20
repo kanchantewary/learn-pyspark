@@ -23,7 +23,7 @@ https://github.com/vivek-bombatkar/Databricks-Apache-Spark-2X-Certified-Develope
 
 #### RDD
 
-[link] (LEARN-RDD.md)
+See [link] (https://github.com/kanchantewary/learn-pysparkLEARN-RDD.md)
 
 https://spark.apache.org/docs/2.1.1/api/java/org/apache/spark/rdd/RDD.html
 
