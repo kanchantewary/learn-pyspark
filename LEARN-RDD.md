@@ -11,7 +11,7 @@ RDDs are immutable, distributed (partitioned) collection of data. The partitions
 
 [programming guides 2](https://spark.apache.org/docs/1.1.1/api/python/pyspark.rdd.RDD-class.html)
 
-[programming guides 3]((http://spark.apache.org/docs/2.2.0/api/python/_modules/pyspark.html)
+[programming guides 3](http://spark.apache.org/docs/2.2.0/api/python/_modules/pyspark.html)
 
 ### types of RDD
 
