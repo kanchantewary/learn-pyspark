@@ -22,6 +22,8 @@ https://umbertogriffo.gitbooks.io/apache-spark-best-practices-and-tuning/content
 https://github.com/vivek-bombatkar/Databricks-Apache-Spark-2X-Certified-Developer.git
 
 #### RDD
+
+[link] (https://github.com/kanchantewary/learn-pyspark/blob/master/LEARN-RDD.md)
 https://spark.apache.org/docs/2.1.1/api/java/org/apache/spark/rdd/RDD.html
 
 https://spark.apache.org/docs/1.1.1/api/python/pyspark.rdd.RDD-class.html
