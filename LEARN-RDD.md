@@ -26,9 +26,13 @@ RDDs are immutable, distributed (partitioned) collection of data. The partitions
 Following are helpful to understand logical plan of rdd (rdd.toDebugString()). A logical plan is always generated, irrespective of whether an action is called or not.
 
 a. HadoopRDD - returned by sc.textFile
+
 b. mapPartitionRDD - returned by operations like map, flatmap, filter, mapPartitions.
+
 c. shuffledRDD - result of repartition or coalesce transformations (? in case of Key-value rdds)
+
 d. parallelCollectionRDD - returned by sc.parallelize (when used to create a rdd)
+
 e. coalescedRDD - returned by a coalesce or repartition function
 
 [also see](https://spark.apache.org/docs/0.6.2/api/core/spark/rdd/package.html)
