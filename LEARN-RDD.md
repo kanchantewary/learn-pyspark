@@ -139,6 +139,8 @@ difference with map: map accumulates all of the results into a collection, where
 
 https://github.com/JerryLead/SparkInternals/blob/master/markdown/english/6-CacheAndCheckpoint.md
 
+https://stackoverflow.com/questions/35127720/what-is-the-difference-between-spark-checkpoint-and-persist-to-a-disk
+
 ### getCheckpointFile
 
 ### getNumPartitions
