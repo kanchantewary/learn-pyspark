@@ -13,23 +13,23 @@ c) Learning Spark
 d) PySpark Cookbook
 
 #### Git Repositories,books
-https://github.com/JerryLead/SparkInternals
+[Spark Internals by Jerry Lead](https://github.com/JerryLead/SparkInternals)
 
-https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/
+[gitbook by Jacek Laskowski](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/)
 
-https://umbertogriffo.gitbooks.io/apache-spark-best-practices-and-tuning/content/
+[another gitbook](https://umbertogriffo.gitbooks.io/apache-spark-best-practices-and-tuning/content/)
 
-https://github.com/vivek-bombatkar/Databricks-Apache-Spark-2X-Certified-Developer.git
+[advices on certification](https://github.com/vivek-bombatkar/Databricks-Apache-Spark-2X-Certified-Developer.git)
 
 #### RDD
 
-See [link] (https://github.com/kanchantewary/learn-pysparkLEARN-RDD.md)
+See [RDD notes](https://github.com/kanchantewary/learn-pyspark/LEARN-RDD.md)
 
-https://spark.apache.org/docs/2.1.1/api/java/org/apache/spark/rdd/RDD.html
+[And programming guides](https://spark.apache.org/docs/2.1.1/api/java/org/apache/spark/rdd/RDD.html)
 
-https://spark.apache.org/docs/1.1.1/api/python/pyspark.rdd.RDD-class.html
+[pyspark](https://spark.apache.org/docs/1.1.1/api/python/pyspark.rdd.RDD-class.html)
 
-http://spark.apache.org/docs/2.2.0/api/python/_modules/pyspark.html
+[pyspark]((http://spark.apache.org/docs/2.2.0/api/python/_modules/pyspark.html)
 
 #### Other resources
 
