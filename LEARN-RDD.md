@@ -21,6 +21,8 @@ RDDs are immutable, distributed (partitioned) collection of data. The partitions
 
 [Introduction to AmpLab Spark Internals](https://www.youtube.com/watch?v=49Hr5xZyTEA)
 
+[blog on DAG](https://databricks.com/blog/2015/06/22/understanding-your-spark-application-through-visualization.html)
+
 ### types of RDD
 
 Following are helpful to understand logical plan of rdd (rdd.toDebugString()). A logical plan is always generated, irrespective of whether an action is called or not.
