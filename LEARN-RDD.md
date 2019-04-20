@@ -4,9 +4,27 @@
 
 RDDs are immutable, distributed (partitioned) collection of data. The partitions may be computed on different nodes of the cluster. It can be created in 3 ways, namely a) load from an external dataset b) parallelize a collection (list) c) transforming another RDD
 
-## create
+## resources
 
-### create from a text file
+
+[programming guides 1](https://spark.apache.org/docs/2.1.1/api/java/org/apache/spark/rdd/RDD.html)
+
+[programming guides 2](https://spark.apache.org/docs/1.1.1/api/python/pyspark.rdd.RDD-class.html)
+
+[programming guides 3]((http://spark.apache.org/docs/2.2.0/api/python/_modules/pyspark.html)
+
+### types of RDD
+
+Following are helpful to understand logical plan of rdd (rdd.toDebugString())
+
+a. HadoopRDD - returned by sc.textFile
+b. mapPartitionRDD - returned by operations like map, flatmap, filter, mapPartitions.
+c. shuffledRDD - result of repartition or coalesce transformations
+d. parallelCollectionRDD - returned by sc.parallelize (when used to create a rdd)
+
+### create
+
+#### create from a text file
 
 
 sc.textFile('filepath',minPartitions=n,use_unicode=True)
