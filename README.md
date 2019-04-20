@@ -25,12 +25,6 @@ d) PySpark Cookbook
 
 See [RDD notes](LEARN-RDD.md)
 
-[And programming guides](https://spark.apache.org/docs/2.1.1/api/java/org/apache/spark/rdd/RDD.html)
-
-[pyspark](https://spark.apache.org/docs/1.1.1/api/python/pyspark.rdd.RDD-class.html)
-
-[pyspark]((http://spark.apache.org/docs/2.2.0/api/python/_modules/pyspark.html)
-
 #### Other resources
 
 Sequence file : https://wiki.apache.org/hadoop/SequenceFile
