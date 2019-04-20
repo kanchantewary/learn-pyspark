@@ -13,14 +13,25 @@ RDDs are immutable, distributed (partitioned) collection of data. The partitions
 
 [programming guides 3](http://spark.apache.org/docs/2.2.0/api/python/_modules/pyspark.html)
 
+[paper by Matei](https://cs.stanford.edu/~matei/papers/2012/nsdi_spark.pdf)
+
+[Advanced Apache Spark- Sameer Farooqui (Databricks)](https://www.youtube.com/watch?v=7ooZ4S7Ay6Y)
+
+[A Deeper Understanding of Spark Internals - Aaron Davidson (Databricks)](https://www.youtube.com/watch?v=dmL0N3qfSc8)
+
+[Introduction to AmpLab Spark Internals](https://www.youtube.com/watch?v=49Hr5xZyTEA)
+
 ### types of RDD
 
-Following are helpful to understand logical plan of rdd (rdd.toDebugString())
+Following are helpful to understand logical plan of rdd (rdd.toDebugString()). A logical plan is always generated, irrespective of whether an action is called or not.
 
 a. HadoopRDD - returned by sc.textFile
 b. mapPartitionRDD - returned by operations like map, flatmap, filter, mapPartitions.
-c. shuffledRDD - result of repartition or coalesce transformations
+c. shuffledRDD - result of repartition or coalesce transformations (? in case of Key-value rdds)
 d. parallelCollectionRDD - returned by sc.parallelize (when used to create a rdd)
+e. coalescedRDD - returned by a coalesce or repartition function
+
+[also see](https://spark.apache.org/docs/0.6.2/api/core/spark/rdd/package.html)
 
 ### create
 
