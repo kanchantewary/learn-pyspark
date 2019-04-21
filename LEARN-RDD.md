@@ -261,3 +261,7 @@ j. keep data in serialized format, to minimize storage
 k. Commonly between 100 and 10,000 partitions
 l. Lower bound: At least ~2x number of cores in cluster
 m. Upper bound: Ensure tasks take at least 100ms
+
+## Write custom RDD
+
+http://blog.madhukaraphatak.com/extending-spark-api/
