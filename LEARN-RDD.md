@@ -25,6 +25,7 @@ RDDs are immutable, distributed (partitioned) collection of data. The partitions
 
 [cloudera blog on spark tuning](https://blog.cloudera.com/blog/2015/03/how-to-tune-your-apache-spark-jobs-part-1/)
 
+[cloudera blog](https://blog.cloudera.com/blog/2015/07/how-to-do-data-quality-checks-using-apache-spark-dataframes/)
 [and related talk](https://www.youtube.com/watch?v=WyfHUNnMutg)
 
 ### types of RDD
