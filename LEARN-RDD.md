@@ -46,7 +46,27 @@ d. parallelCollectionRDD - returned by sc.parallelize (when used to create a rdd
 
 e. coalescedRDD - returned by a coalesce or repartition function
 
-f. other sub-classes (as per spark doc) : BaseRRDD, CoGroupedRDD, EdgeRDD, HadoopRDD, JdbcRDD, NewHadoopRDD, PartitionPruningRDD, ShuffledRDD, UnionRDD, VertexRDD
+f. FilteredRDD
+
+g. MappedRDD
+
+h. PairRDD
+
+i. UnionRDD
+
+j. PythonRDD
+
+k. DoubleRDD
+
+l. JdbcRDD
+
+m. JsonRDD
+
+n. SchemaRDD
+
+o. VertexRDD
+
+p. EdgeRDD
 
 [also see](https://spark.apache.org/docs/0.6.2/api/core/spark/rdd/package.html)
 
