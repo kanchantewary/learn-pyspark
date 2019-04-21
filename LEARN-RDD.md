@@ -30,7 +30,7 @@ RDDs are immutable, distributed (partitioned) collection of data. The partitions
 
 ### types of RDD
 
-Following are helpful to understand logical plan of rdd (rdd.toDebugString()). A logical plan is always generated, irrespective of whether an action is called or not.
+Following are helpful to understand logical plan of rdd (rdd.toDebugString()). A logical plan is always generated, irrespective of whether an action is called or not. These are basically sub-classes of base RDD class.
 
 a. HadoopRDD - returned by sc.textFile
 
@@ -41,6 +41,8 @@ c. shuffledRDD - result of repartition or coalesce transformations (? in case of
 d. parallelCollectionRDD - returned by sc.parallelize (when used to create a rdd)
 
 e. coalescedRDD - returned by a coalesce or repartition function
+
+f. other sub-classes (as per spark doc) : BaseRRDD, CoGroupedRDD, EdgeRDD, HadoopRDD, JdbcRDD, NewHadoopRDD, PartitionPruningRDD, ShuffledRDD, UnionRDD, VertexRDD
 
 [also see](https://spark.apache.org/docs/0.6.2/api/core/spark/rdd/package.html)
 
@@ -223,3 +225,16 @@ use to sort a RDD
 
 ### unpersist
 
+## Performance Tuning
+
+a. avoid too few partitions. it would lead to less concurrency (and unused cores). should be at least 2 times to number of cores.
+b. avoid too many partitions. it would mean more framework overhead.
+c. avoid too big partitions
+d. if no of partitions are close to 2000, bump it up to make it above 2000
+e. resolve data skew using salting technique
+f. resolve cartesian joins using methods like nested structure, windowing
+g. avoid shuffle as much as possible in your DAG (it is expensive)
+h. use reduceByKey instead of groupByKey
+i. use treeReduce over reduce
+j. keep data in serialized format, to minimize storage
+k. 
