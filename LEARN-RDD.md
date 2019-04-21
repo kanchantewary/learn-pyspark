@@ -30,6 +30,8 @@ RDDs are immutable, distributed (partitioned) collection of data. The partitions
 
 [RDD slides](https://www.slideshare.net/satyanarayanpatel1/ibm-spark-meetup-rdd-spark-basics?from_action=save)
 
+[sameer faruqui lab documents](https://tinyurl.com/dsesparklab) and [this](tinyurl.com/cdhsparklab)
+
 ### types of RDD
 
 Following are helpful to understand logical plan of rdd (rdd.toDebugString()). A logical plan is always generated, irrespective of whether an action is called or not. These are basically sub-classes of base RDD class.
