@@ -6,3 +6,4 @@ lambda functions are small anonymous functions. It can have any number of input 
 
 example: `lambda x : x**2` or `lambda x,y:x+y` or conditional expressions like `lambda x: x < 0`
 
+[go back to main documentation](README.md)
