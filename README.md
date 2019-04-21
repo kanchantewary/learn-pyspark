@@ -6,9 +6,9 @@
 #### Books
 a) [Spark Definitive Guide](https://learning.oreilly.com/library/view/spark-the-definitive/9781491912201/)
 
-b) High Performance Spark
+b) [High Performance Spark](https://learning.oreilly.com/library/view/mastering-apache-spark/9781786462749/Text/cover.xhtml)
 
-c) Learning Spark
+c) [Learning Spark](https://learning.oreilly.com/library/view/learning-spark/9781449359034/)
 
 d) PySpark Cookbook
 
@@ -24,6 +24,8 @@ d) PySpark Cookbook
 #### RDD
 
 See [RDD notes](LEARN-RDD.md)
+
+See [A primer on Lambda](lambda-functions.md)
 
 #### Other resources
 
