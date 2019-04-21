@@ -208,14 +208,22 @@ https://stackoverflow.com/questions/35127720/what-is-the-difference-between-spar
 ### repartition(numPartitions)
 
 Can Increase/decrease number of partitions
+
 Internally does shuffle
+
 expensive due to shuffle
+
 For decreasing partition use coalesce
 
-### Coalesce(numPartition,Shuffle:[true/false])
+
+### Coalesce(numPartition,Shuffle: <ins>[True/False]</ins>
+
 Decreases partitions
+
 Goes for narrow dependencies
+
 Avoids shuffle
+
 In case of drastic reduction may trigger shuffle
 
 ### saveAsObjectFile
