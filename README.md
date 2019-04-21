@@ -4,7 +4,7 @@
 180 minutes, 40 MCQ
 ### Preparation
 #### Books
-a) Spark Definitive Guide
+a) [Spark Definitive Guide](https://learning.oreilly.com/library/view/spark-the-definitive/9781491912201/)
 
 b) High Performance Spark
 
