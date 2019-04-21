@@ -28,6 +28,8 @@ RDDs are immutable, distributed (partitioned) collection of data. The partitions
 [cloudera blog](https://blog.cloudera.com/blog/2015/07/how-to-do-data-quality-checks-using-apache-spark-dataframes/)
 [and related talk](https://www.youtube.com/watch?v=WyfHUNnMutg)
 
+[RDD slides](https://www.slideshare.net/satyanarayanpatel1/ibm-spark-meetup-rdd-spark-basics?from_action=save)
+
 ### types of RDD
 
 Following are helpful to understand logical plan of rdd (rdd.toDebugString()). A logical plan is always generated, irrespective of whether an action is called or not. These are basically sub-classes of base RDD class.
@@ -203,7 +205,18 @@ https://stackoverflow.com/questions/35127720/what-is-the-difference-between-spar
 
 ### randomSplit
 
-### repartition
+### repartition(numPartitions)
+
+Can Increase/decrease number of partitions
+Internally does shuffle
+expensive due to shuffle
+For decreasing partition use coalesce
+
+### Coalesce(numPartition,Shuffle:[true/false])
+Decreases partitions
+Goes for narrow dependencies
+Avoids shuffle
+In case of drastic reduction may trigger shuffle
 
 ### saveAsObjectFile
 
@@ -227,7 +240,7 @@ use to sort a RDD
 
 ## Performance Tuning
 
-a. avoid too few partitions. it would lead to less concurrency (and unused cores). should be at least 2 times to number of cores.
+a. avoid too few partitions. it would lead to less concurrency (and unused cores).
 b. avoid too many partitions. it would mean more framework overhead.
 c. avoid too big partitions
 d. if no of partitions are close to 2000, bump it up to make it above 2000
@@ -237,4 +250,6 @@ g. avoid shuffle as much as possible in your DAG (it is expensive)
 h. use reduceByKey instead of groupByKey
 i. use treeReduce over reduce
 j. keep data in serialized format, to minimize storage
-k. 
+k. Commonly between 100 and 10,000 partitions
+l. Lower bound: At least ~2x number of cores in cluster
+m. Upper bound: Ensure tasks take at least 100ms
