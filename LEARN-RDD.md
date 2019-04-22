@@ -237,6 +237,7 @@ expensive due to shuffle
 
 For decreasing partition use coalesce
 
+#### custom partitioner
 
 ### Coalesce(numPartition,Shuffle: <ins>[True/False]</ins>
 
