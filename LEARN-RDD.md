@@ -287,3 +287,7 @@ m. Upper bound: Ensure tasks take at least 100ms
 ## Write custom RDD
 
 http://blog.madhukaraphatak.com/extending-spark-api/
+
+## spark cassendra connector
+
+https://github.com/datastax/spark-cassandra-connector
