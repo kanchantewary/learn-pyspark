@@ -23,5 +23,7 @@ Further, refer [this](https://stackoverflow.com/questions/28664834/which-cluster
 
 ## Learn little bit of Mesos
 
+https://open.mesosphere.com/advanced-course/
+
 ## Learn little bit of HDFS
 [See](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html)
