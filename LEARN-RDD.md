@@ -255,9 +255,16 @@ In case of drastic reduction may trigger shuffle
 
 ### sortBy
 
-use to sort a RDD
+Returns the rdd sorted by the given key function. Ascending is default order. set ascending=False in case of descending.
+
+`rdd.sortBy(lambda x:x[0])`
+
 
 ### setName
+
+Useful to define a name for a rdd. The name would be visible in DAG in Spark UI, plus, if you cache it, it would be visible in storage.
+
+`rdd.setName("New Name")`
 
 ### toString
 
