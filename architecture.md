@@ -27,3 +27,11 @@ https://open.mesosphere.com/advanced-course/
 
 ## Learn little bit of HDFS
 [See](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html)
+
+
+### spark-env.sh
+
+SPARK_WORKER_INSTANCES: [default: 1] # of worker instances to run on each machine
+SPARK_WORKER_CORES: [default: ALL] # of cores to allow Spark applications to use on the machine
+conf/spark-env.sh SPARK_WORKER_MEMORY: [default: TOTAL RAM – 1 GB] Total memory to allow Spark applications to use on the machine
+SPARK_DAEMON_MEMORY: [default: 512 MB] Memory to allocate to the Spark master and worker daemons themselves
