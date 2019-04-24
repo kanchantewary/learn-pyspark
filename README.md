@@ -21,6 +21,8 @@ d) PySpark Cookbook
 
 [advices on certification](https://github.com/vivek-bombatkar/Databricks-Apache-Spark-2X-Certified-Developer.git)
 
+[Tutorials by Mahmoud Parsian](https://github.com/mahmoudparsian/pyspark-tutorial)
+
 #### RDD
 
 See [RDD notes](LEARN-RDD.md)
@@ -63,3 +65,13 @@ https://developer.ibm.com/clouddataservices/docs/analytics-engine/get-started/
 #### Feature Engineering
 
 https://machinelearningmastery.com/discover-feature-engineering-how-to-engineer-features-and-how-to-get-good-at-it/
+
+
+## Questions/Comments
+
+[View LinkedIn Profile](https://www.linkedin.com/in/kanchan-tewary-44612279/)
+
+Please send me email at: kanchan.tewary@gmail.com
+
+Thanks & Best Regards,
+Kanchan
