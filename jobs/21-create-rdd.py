@@ -44,9 +44,11 @@ print(count)
 
 #pass a list to the parallelize method to create a rdd
 
-r3 = sc.parallelize(["spark","hadoop","mongo","hive","nifi"])
+r3 = sc.parallelize(["spark","hadoop","mongo","hive","nifi"]).map(lambda x: x[0]).filter(lambda x: x=='s')
 
-print(r3.count())
+r3.count()
+
+print(r3.toDebugString())
 
 r4 = sc.textFile("/home/user/workarea/projects/learn-pyspark/data/boot.log")
 
@@ -55,6 +57,9 @@ print(r4.count())
 errR4 = r4.filter(lambda x: 'boot' in x)
 
 print(errR4.first())
+
+print('logical plan output:\n')
+print(errR4.toDebugString())
 
 myCollection = "Spark The definitive guide : big data processing made simple".split(" ")
 

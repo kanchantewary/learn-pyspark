@@ -3,7 +3,14 @@ from pyspark.sql import SparkSession
 
 spark = SparkSession.Builder().appName("rdd-transform").master("local[2]").getOrCreate()
 
+spark.conf.set("logLineage",'true')
+
 sc = spark.sparkContext
+
+sc.setLogLevel("INFO")
+
+#set log lineage to true
+#--conf spark.logLineage=true
 
 #narrow transformations - doesnt require a shuffle
 
@@ -91,9 +98,12 @@ flight_rdd = sc.textFile("/home/user/workarea/projects/learn-pyspark/data/2015-f
 
 print(flight_rdd.take(5))
 
-flight_rdd2 = flight_rdd.map(lambda x:x.split('\t'))
+flight_rdd2 = flight_rdd.map(lambda x:x.split('\t')).repartition(4)
 
-print(flight_rdd2.take(5))
+print(f'flight rdd2 logical plan: {flight_rdd2.toDebugString()}\n')
+
+#print(flight_rdd2.take(5))
+# logical plan is always created, irrespective of whether an action is called or not
 
 print(flight_rdd.getNumPartitions())
 print(r1.getNumPartitions())
@@ -192,6 +202,8 @@ z1.unpersist()
 
 print(flight_rdd.pipe("wc").collect())
 
+print(flight_rdd.pipe("wc").toDebugString())
+
 #generate count
 
 largeRdd = sc.textFile('/home/user/workarea/projects/learn-pyspark/data/departuredelays.csv')
@@ -224,6 +236,9 @@ z1.saveAsTextFile('/home/user/workarea/projects/learn-pyspark/data/z1')
 z1sum = z1.reduce(lambda x,y:x+y)
 z1fold = z1.fold(0,lambda x,y:x+y)
 z1fold10 = z1.fold(10,lambda x,y:x+y) #initial value would be added to the computations in each partition, and later again while adding partitions
+
+print(f'z1 logical plan: {z1.toDebugString()}\n')
+
 print(z1.collect())
 print(f'number of partitions in z1 = {z1.getNumPartitions()}')
 print(f'reduce result={z1sum}, fold result with 0 offset={z1fold}, fold result with 10 initial value={z1fold10}') # 10+(10+0+1+2)+(10+3+4)=40
@@ -260,4 +275,10 @@ g1.foreachPartition(num_to_word)
 
 #passing functions
 
+#sort
 
+words = sc.parallelize(['tiger','elephant','lion','cat','zebra','owl'])
+
+words_sorted = words.sortBy(lambda x:x[0])
+print(f'words_sorted logical plan: {words_sorted.toDebugString()}\n')
+print(words_sorted.collect())

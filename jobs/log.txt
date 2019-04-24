@@ -1,0 +1,60 @@
+[1, 2, 3, 3]
+[2, 3, 4, 4]
+[2, 3, 3]
+[2, 1, 3]
+[2, 3]
+[1, 2, 3, 3, 4, 5]
+[1, 2, 3, 3, 4, 5]
+[3]
+[1, 2]
+[(1, 3), (1, 4), (1, 5), (2, 3), (2, 4), (2, 5)]
+9
+4
+1
+[1, 2]
+['DEST_COUNTRY_NAME,ORIGIN_COUNTRY_NAME,count', 'United States,Romania,15', 'United States,Croatia,1', 'United States,Ireland,344', 'Egypt,United States,15']
+flight rdd2 logical plan: b'(4) MapPartitionsRDD[41] at coalesce at NativeMethodAccessorImpl.java:0 []\n |  CoalescedRDD[40] at coalesce at NativeMethodAccessorImpl.java:0 []\n |  ShuffledRDD[39] at coalesce at NativeMethodAccessorImpl.java:0 []\n +-(1) MapPartitionsRDD[38] at coalesce at NativeMethodAccessorImpl.java:0 []\n    |  PythonRDD[37] at RDD at PythonRDD.scala:53 []\n    |  /home/user/workarea/projects/learn-pyspark/data/2015-flight-data.txt.gz MapPartitionsRDD[35] at textFile at NativeMethodAccessorImpl.java:0 []\n    |  /home/user/workarea/projects/learn-pyspark/data/2015-flight-data.txt.gz HadoopRDD[34] at textFile at NativeMethodAccessorImpl.java:0 []'
+
+1
+2
+2
+number of partitions after coalesce: <bound method RDD.getNumPartitions of CoalescedRDD[47] at coalesce at NativeMethodAccessorImpl.java:0>
+[('D', 'E'), ('U', 'n'), ('U', 'n'), ('U', 'n'), ('E', 'g')]
+join results
+
+ParallelCollectionRDD[49] at parallelize at PythonRDD.scala:195
+ParallelCollectionRDD[50] at parallelize at PythonRDD.scala:195
+[(1, ('ram', 'kolkata')), (3, ('madhu', 'delhi'))]
+[(4, ('jadu', None)), (1, ('ram', 'kolkata')), (2, ('shyam', None)), (3, ('madhu', 'delhi'))]
+[(1, ('ram', 'kolkata')), (5, (None, 'patna')), (3, ('madhu', 'delhi'))]
+stdev 0.816496580927726, samplestdev 1.0, variance 0.6666666666666666, sampleVariance 1.0, mean 2.0, max 3, min 1, sum 6
+[(0, 1000), (1, 1001), (2, 1002), (3, 1003), (4, 1004)]
+[(0, 0), (1, 1), (2, 2), (3, 3), (4, 4)]
+[(0, 0), (1, 2), (2, 1), (3, 3), (4, 5)]
+Serialized 1x Replicated
+Memory Serialized 1x Replicated
+Disk Serialized 1x Replicated
+Memory Serialized 1x Replicated
+Memory Serialized 1x Replicated
+Disk Memory Serialized 1x Replicated
+Disk Memory Serialized 1x Replicated
+['    257     606    7080']
+b'(1) PythonRDD[93] at RDD at PythonRDD.scala:53 []\n |  /home/user/workarea/projects/learn-pyspark/data/2015-flight-data.txt.gz MapPartitionsRDD[35] at textFile at NativeMethodAccessorImpl.java:0 []\n |  /home/user/workarea/projects/learn-pyspark/data/2015-flight-data.txt.gz HadoopRDD[34] at textFile at NativeMethodAccessorImpl.java:0 []'
+1391579
+1391579
+deleting z1 outdir
+
+z1 logical plan: b'(2) PythonRDD[91] at RDD at PythonRDD.scala:53 []\n |  ParallelCollectionRDD[83] at parallelize at PythonRDD.scala:195 []'
+
+[0, 1, 2, 3, 4]
+number of partitions in z1 = 2
+reduce result=10, fold result with 0 offset=10, fold result with 10 initial value=40
+c1 partitions initial = 4
+c1 partitions after coalesce = 1
+3
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+after applying glom function
+[[0, 1, 2], [3, 4, 5], [6, 7, 8, 9]]
+words_sorted logical plan: b'(2) PythonRDD[121] at RDD at PythonRDD.scala:53 []\n |  MapPartitionsRDD[120] at mapPartitions at PythonRDD.scala:133 []\n |  ShuffledRDD[119] at partitionBy at NativeMethodAccessorImpl.java:0 []\n +-(2) PairwiseRDD[118] at sortBy at /home/user/workarea/projects/learn-pyspark/jobs/22-rdd-transformations.py:275 []\n    |  PythonRDD[117] at sortBy at /home/user/workarea/projects/learn-pyspark/jobs/22-rdd-transformations.py:275 []\n    |  ParallelCollectionRDD[114] at parallelize at PythonRDD.scala:195 []'
+
+['cat', 'elephant', 'lion', 'owl', 'tiger', 'zebra']
