@@ -299,3 +299,22 @@ http://blog.madhukaraphatak.com/extending-spark-api/
 ## spark cassendra connector
 
 https://github.com/datastax/spark-cassandra-connector
+
+## Logical Plan
+
+rdd.toDebugString().decode("utf-8")
+
+Or set logLineage to true, with the following code
+`spark-submit mycode.py --conf spark.logLineage=true`
+
+Or
+
+`spark.conf.set("logLevel",'true')
+sc.setLogLevel("INFO")`
+
+
+## Python unicode support
+
+https://docs.python.org/3/howto/unicode.html
+
+
