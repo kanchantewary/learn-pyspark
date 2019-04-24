@@ -83,7 +83,7 @@ filepath can be path to a single file, or multiple files provided with wildcards
 filepath should be accessible from driver and all worker nodes [either copied to all worker nodes, or placed in network-mounted file system]
 increasing the value of minParitions would increase parallelism and improve execution time.
 
-sc.wholeTextFiles('filepath')
+`sc.wholeTextFiles('filepath')`
 
 notes:
 read multiple files. each row would contain file name and content of each file as pairs.
@@ -91,14 +91,14 @@ read multiple files. each row would contain file name and content of each file a
 further read: rdd programming guide
 
 reading from hdfs:
-sc.textFile('hdfs://folder/filename.csv')
+`sc.textFile('hdfs://folder/filename.csv')`
 
 reading from s3:
-sc.textFile('s3://bucket/folder/filename.csv')
+`sc.textFile('s3://bucket/folder/filename.csv')`
 
 ### create from a list
 
-sc.parallelize(list)
+`sc.parallelize(list)`
 
 ## transformations
 
@@ -302,7 +302,7 @@ https://github.com/datastax/spark-cassandra-connector
 
 ## Logical Plan
 
-rdd.toDebugString().decode("utf-8")
+`rdd.toDebugString().decode("utf-8")`
 
 Or set logLineage to true, with the following code
 `spark-submit mycode.py --conf spark.logLineage=true`
