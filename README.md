@@ -1,38 +1,31 @@
 # learning pyspark
-## spark session example
-```
-spark-submit sparksession_practice.py
-```
-
-### ibm cloud resources
-https://developer.ibm.com/clouddataservices/docs/spark/
-https://console.bluemix.net/docs/services/AnalyticsforApacheSpark/using_spark-submit.html#running-a-spark-application-using-the-spark-submit-sh-script
-https://developer.ibm.com/clouddataservices/docs/analytics-engine/get-started/
-
-
-## Machine Learning
-
-### Feature Engineering
-
-https://machinelearningmastery.com/discover-feature-engineering-how-to-engineer-features-and-how-to-get-good-at-it/
 
 ## Certification
 180 minutes, 40 MCQ
 ### Preparation
 #### Books
-Spark Definitive Guide
+a) [Spark Definitive Guide](https://learning.oreilly.com/library/view/spark-the-definitive/9781491912201/)
 
-High Performance Spark
+b) [High Performance Spark](https://learning.oreilly.com/library/view/mastering-apache-spark/9781786462749/Text/cover.xhtml)
 
-PySpark Cookbook
+c) [Learning Spark](https://learning.oreilly.com/library/view/learning-spark/9781449359034/)
 
-#### Git Repositories
-https://github.com/vivek-bombatkar/Databricks-Apache-Spark-2X-Certified-Developer.git
+d) PySpark Cookbook
+
+#### Git Repositories,books
+[Spark Internals by Jerry Lead](https://github.com/JerryLead/SparkInternals)
+
+[gitbook by Jacek Laskowski](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/)
+
+[another gitbook](https://umbertogriffo.gitbooks.io/apache-spark-best-practices-and-tuning/content/)
+
+[advices on certification](https://github.com/vivek-bombatkar/Databricks-Apache-Spark-2X-Certified-Developer.git)
 
 #### RDD
-https://spark.apache.org/docs/2.1.1/api/java/org/apache/spark/rdd/RDD.html
 
-https://spark.apache.org/docs/1.1.1/api/python/pyspark.rdd.RDD-class.html
+See [RDD notes](LEARN-RDD.md)
+
+See [A primer on Lambda](lambda-functions.md)
 
 #### Other resources
 
@@ -48,8 +41,25 @@ http://blog.madhukaraphatak.com/
 
 http://www.cs.sfu.ca/CourseCentral/732/ggbaker/content/spark.html
 
-https://umbertogriffo.gitbooks.io/apache-spark-best-practices-and-tuning/content/
 
 ### A little bit of Scala
 
 https://www.coursera.org/learn/progfun1
+
+
+### Other things
+
+#### ibm cloud resources
+https://developer.ibm.com/clouddataservices/docs/spark/
+
+https://console.bluemix.net/docs/services/AnalyticsforApacheSpark/using_spark-submit.html
+
+#running-a-spark-application-using-the-spark-submit-sh-script
+https://developer.ibm.com/clouddataservices/docs/analytics-engine/get-started/
+
+
+#### Machine Learning
+
+#### Feature Engineering
+
+https://machinelearningmastery.com/discover-feature-engineering-how-to-engineer-features-and-how-to-get-good-at-it/
