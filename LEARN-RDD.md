@@ -193,7 +193,15 @@ https://stackoverflow.com/questions/35127720/what-is-the-difference-between-spar
 
 ### getNumPartitions
 
+get the number of partitions in the rdd.
+
+`rdd.getNumPartitions()`
+
 ### glom
+
+Return an RDD created by coalescing all elements within each partition into a list. The method does not perform any repartition or shuffle.
+
+`rdd.glom()`
 
 ### groupBy
 
