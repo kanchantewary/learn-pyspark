@@ -209,26 +209,34 @@ Return an RDD created by coalescing all elements within each partition into a li
 
 ### groupByKey
 
-`r1 = sc.parallelize([("a",1),("b",2),("c",3),("d",4),("a",5),("c",6),("c",2)])`
-`r3 = r1.groupByKey()`
-`r3.collect()`
+`r1 = sc.parallelize([("a",1),("b",2),("c",3),("d",4),("a",5),("c",6),("c",2)])`  
+`r3 = r1.groupByKey()`  
+`r3.collect()`  
 
-#r3 rdd returns a collection of objects, which needs to be converted further to a list.
+r3 rdd returns a collection of objects, which needs to be converted further to a list.
 
-r4 = r3.map(lambda x:(x[0],list(x[1])))
+`r4 = r3.map(lambda x:(x[0],list(x[1])))`  
+`print(r4.toDebugString().decode("utf-8"))`  
+`print(r4.collect())`
 
-print(r4.toDebugString().decode("utf-8"))
-print(r4.collect())`
-
-Note: performs shuffle first. We need to apply map function further to derive the data. We should use reduceByKey instead to achieve the same results. See [this](https://databricks.gitbooks.io/databricks-spark-knowledge-base/content/best_practices/prefer_reducebykey_over_groupbykey.html)
+Note: performs shuffle first. We need to apply map function further to derive the data. We should use reduceByKey instead to achieve the same results. See [this](https://databricks.gitbooks.io/databricks-spark-knowledge-base/content/best_practices/prefer_reducebykey_over_groupbykey.html) and [this](https://stackoverflow.com/questions/43364432/spark-difference-between-reducebykey-vs-groupbykey-vs-aggregatebykey-vs-combineb)
 
 ### reduceByKey
 
-`r1 = sc.parallelize([("a",1),("b",2),("c",3),("d",4),("a",5),("c",6),("c",2)])
-r2 = r1.reduceByKey(lambda x,y:x+y)
+`r1 = sc.parallelize([("a",1),("b",2),("c",3),("d",4),("a",5),("c",6),("c",2)])  
+r2 = r1.reduceByKey(lambda x,y:x+y)  
 r2.collect()`
 
 Note: Data is combined so that at each partition there should be at least one value for each key. And then shuffle happens and it is sent over the network to some particular executor for some action such as reduce.
+
+### combineByKey
+
+Combine values with the same key using a different result type.
+
+
+### mapValues
+
+Apply a function to each value of a pair RDD without changing the key.
 
 ### id
 
