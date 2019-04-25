@@ -142,6 +142,9 @@ using custom function:
 ### treeReduce
 
 ### fold
+applies an associative function and an initial value to each partition, and then the results of all partitions. The initial value should be set to zero.
+
+`add code here`
 
 ### aggregate
 
@@ -207,6 +210,10 @@ Return an RDD created by coalescing all elements within each partition into a li
 
 ### groupBy
 
+Returns an rdd of grouped items, based on the function supplied. The result has to be converted to a list further, using a map function.
+
+`code goes here - refer 26`
+
 ### groupByKey
 
 `r1 = sc.parallelize([("a",1),("b",2),("c",3),("d",4),("a",5),("c",6),("c",2)])`  
@@ -233,20 +240,29 @@ Note: Data is combined so that at each partition there should be at least one va
 
 Combine values with the same key using a different result type.
 
+### foldByKey
+
+similar to fold, applied by key
+
+`code goes here`
 
 ### mapValues
 
 Apply a function to each value of a pair RDD without changing the key.
 
+
+
 ### id
+Returns an unique numeric id of the rdd within the sparkcontext of the application. This id can be seen in RDD logical map as well.
+
+`rdd.id()`
 
 ### isCheckpointed
 
 ### isEmpty
+Returns true/false, based on whether RDD is empty or not. Please note, it is applied on the whole rdd, not a particular partition.
 
-### iterator
-
-### keyBy
+`rdd.isEmpty()`
 
 ### mapPartitions
 
@@ -314,6 +330,9 @@ Useful to define a name for a rdd. The name would be visible in DAG in Spark UI,
 ### zipWithUniqueId
 
 ### unpersist
+
+### collectAsMap
+returns an RDD of key-value pairs as dictionary
 
 ## Performance Tuning
 
