@@ -209,14 +209,9 @@ Return an RDD created by coalescing all elements within each partition into a li
 
 ### groupByKey
 
-`#create
-r1 = sc.parallelize([("a",1),("b",2),("c",3),("d",4),("a",5),("c",6),("c",2)])
-
-#groupbykey
-
-r3 = r1.groupByKey()
-
-print(r3.collect())
+`r1 = sc.parallelize([("a",1),("b",2),("c",3),("d",4),("a",5),("c",6),("c",2)])`
+`r3 = r1.groupByKey()`
+`r3.collect()`
 
 #r3 rdd returns a collection of objects, which needs to be converted further to a list.
 
