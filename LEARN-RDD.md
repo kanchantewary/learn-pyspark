@@ -227,6 +227,16 @@ print(r4.collect())`
 
 Note: performs shuffle first. We need to apply map function further to derive the data. We should use reduceByKey instead to achieve the same results. See [this](https://databricks.gitbooks.io/databricks-spark-knowledge-base/content/best_practices/prefer_reducebykey_over_groupbykey.html)
 
+### reduceByKey
+
+`#create
+r1 = sc.parallelize([("a",1),("b",2),("c",3),("d",4),("a",5),("c",6),("c",2)])
+
+r2 = r1.reduceByKey(lambda x,y:x+y)
+r2.collect()`
+
+Note: Data is combined so that at each partition there should be at least one value for each key. And then shuffle happens and it is sent over the network to some particular executor for some action such as reduce.
+
 ### id
 
 ### isCheckpointed
@@ -306,18 +316,18 @@ Useful to define a name for a rdd. The name would be visible in DAG in Spark UI,
 
 ## Performance Tuning
 
-a. avoid too few partitions. it would lead to less concurrency (and unused cores).
-b. avoid too many partitions. it would mean more framework overhead.
-c. avoid too big partitions
-d. if no of partitions are close to 2000, bump it up to make it above 2000
-e. resolve data skew using salting technique
-f. resolve cartesian joins using methods like nested structure, windowing
-g. avoid shuffle as much as possible in your DAG (it is expensive)
-h. use reduceByKey instead of groupByKey
-i. use treeReduce over reduce
-j. keep data in serialized format, to minimize storage
-k. Commonly between 100 and 10,000 partitions
-l. Lower bound: At least ~2x number of cores in cluster
+a. avoid too few partitions. it would lead to less concurrency (and unused cores)  
+b. avoid too many partitions. it would mean more framework overhead  
+c. avoid too big partitions  
+d. if no of partitions are close to 2000, bump it up to make it above 2000  
+e. resolve data skew using salting technique  
+f. resolve cartesian joins using methods like nested structure, windowing  
+g. avoid shuffle as much as possible in your DAG (it is expensive)  
+h. use reduceByKey instead of groupByKey  
+i. use treeReduce over reduce  
+j. keep data in serialized format, to minimize storage  
+k. Commonly between 100 and 10,000 partitions  
+l. Lower bound: At least ~2x number of cores in cluster  
 m. Upper bound: Ensure tasks take at least 100ms
 n. Don't copy all elements of a large RDD to the driver. Collect will attempt to copy every single element in the RDD onto the single driver program, and then run out of memory and crash.Instead, you can write out the RDD to files or export the RDD to a database that is large enough to hold all the data.
 
