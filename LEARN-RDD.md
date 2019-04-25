@@ -32,6 +32,8 @@ RDDs are immutable, distributed (partitioned) collection of data. The partitions
 
 [sameer faruqui lab documents](https://tinyurl.com/dsesparklab) and [this](tinyurl.com/cdhsparklab)
 
+https://legacy.gitbook.com/book/databricks/databricks-spark-knowledge-base/details
+
 ### types of RDD
 
 Following are helpful to understand logical plan of rdd (rdd.toDebugString()). A logical plan is always generated, irrespective of whether an action is called or not. These are basically sub-classes of base RDD class.
@@ -206,6 +208,10 @@ Return an RDD created by coalescing all elements within each partition into a li
 ### groupBy
 
 ### groupByKey
+
+performs shuffle first. We need to apply map function further to derive the data.
+
+See [this](https://databricks.gitbooks.io/databricks-spark-knowledge-base/content/best_practices/prefer_reducebykey_over_groupbykey.html)
 
 ### id
 
