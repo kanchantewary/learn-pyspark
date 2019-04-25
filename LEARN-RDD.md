@@ -229,9 +229,7 @@ Note: performs shuffle first. We need to apply map function further to derive th
 
 ### reduceByKey
 
-`#create
-r1 = sc.parallelize([("a",1),("b",2),("c",3),("d",4),("a",5),("c",6),("c",2)])
-
+`r1 = sc.parallelize([("a",1),("b",2),("c",3),("d",4),("a",5),("c",6),("c",2)])
 r2 = r1.reduceByKey(lambda x,y:x+y)
 r2.collect()`
 
