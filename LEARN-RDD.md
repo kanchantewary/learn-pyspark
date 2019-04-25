@@ -142,6 +142,9 @@ using custom function:
 ### treeReduce
 
 ### fold
+applies an associative function and an initial value to each partition, and then the results of all partitions. The initial value should be set to zero.
+
+`add code here`
 
 ### aggregate
 
@@ -207,21 +210,59 @@ Return an RDD created by coalescing all elements within each partition into a li
 
 ### groupBy
 
+Returns an rdd of grouped items, based on the function supplied. The result has to be converted to a list further, using a map function.
+
+`code goes here - refer 26`
+
 ### groupByKey
 
-performs shuffle first. We need to apply map function further to derive the data.
+`r1 = sc.parallelize([("a",1),("b",2),("c",3),("d",4),("a",5),("c",6),("c",2)])`  
+`r3 = r1.groupByKey()`  
+`r3.collect()`  
 
-See [this](https://databricks.gitbooks.io/databricks-spark-knowledge-base/content/best_practices/prefer_reducebykey_over_groupbykey.html)
+r3 rdd returns a collection of objects, which needs to be converted further to a list.
+
+`r4 = r3.map(lambda x:(x[0],list(x[1])))`  
+`print(r4.toDebugString().decode("utf-8"))`  
+`print(r4.collect())`
+
+Note: performs shuffle first. We need to apply map function further to derive the data. We should use reduceByKey instead to achieve the same results. See [this](https://databricks.gitbooks.io/databricks-spark-knowledge-base/content/best_practices/prefer_reducebykey_over_groupbykey.html) and [this](https://stackoverflow.com/questions/43364432/spark-difference-between-reducebykey-vs-groupbykey-vs-aggregatebykey-vs-combineb)
+
+### reduceByKey
+
+`r1 = sc.parallelize([("a",1),("b",2),("c",3),("d",4),("a",5),("c",6),("c",2)])  
+r2 = r1.reduceByKey(lambda x,y:x+y)  
+r2.collect()`
+
+Note: Data is combined so that at each partition there should be at least one value for each key. And then shuffle happens and it is sent over the network to some particular executor for some action such as reduce.
+
+### combineByKey
+
+Combine values with the same key using a different result type.
+
+### foldByKey
+
+similar to fold, applied by key
+
+`code goes here`
+
+### mapValues
+
+Apply a function to each value of a pair RDD without changing the key.
+
+
 
 ### id
+Returns an unique numeric id of the rdd within the sparkcontext of the application. This id can be seen in RDD logical map as well.
+
+`rdd.id()`
 
 ### isCheckpointed
 
 ### isEmpty
+Returns true/false, based on whether RDD is empty or not. Please note, it is applied on the whole rdd, not a particular partition.
 
-### iterator
-
-### keyBy
+`rdd.isEmpty()`
 
 ### mapPartitions
 
@@ -290,21 +331,25 @@ Useful to define a name for a rdd. The name would be visible in DAG in Spark UI,
 
 ### unpersist
 
+### collectAsMap
+returns an RDD of key-value pairs as dictionary
+
 ## Performance Tuning
 
-a. avoid too few partitions. it would lead to less concurrency (and unused cores).
-b. avoid too many partitions. it would mean more framework overhead.
-c. avoid too big partitions
-d. if no of partitions are close to 2000, bump it up to make it above 2000
-e. resolve data skew using salting technique
-f. resolve cartesian joins using methods like nested structure, windowing
-g. avoid shuffle as much as possible in your DAG (it is expensive)
-h. use reduceByKey instead of groupByKey
-i. use treeReduce over reduce
-j. keep data in serialized format, to minimize storage
-k. Commonly between 100 and 10,000 partitions
-l. Lower bound: At least ~2x number of cores in cluster
+a. avoid too few partitions. it would lead to less concurrency (and unused cores)  
+b. avoid too many partitions. it would mean more framework overhead  
+c. avoid too big partitions  
+d. if no of partitions are close to 2000, bump it up to make it above 2000  
+e. resolve data skew using salting technique  
+f. resolve cartesian joins using methods like nested structure, windowing  
+g. avoid shuffle as much as possible in your DAG (it is expensive)  
+h. use reduceByKey instead of groupByKey  
+i. use treeReduce over reduce  
+j. keep data in serialized format, to minimize storage  
+k. Commonly between 100 and 10,000 partitions  
+l. Lower bound: At least ~2x number of cores in cluster  
 m. Upper bound: Ensure tasks take at least 100ms
+n. Don't copy all elements of a large RDD to the driver. Collect will attempt to copy every single element in the RDD onto the single driver program, and then run out of memory and crash.Instead, you can write out the RDD to files or export the RDD to a database that is large enough to hold all the data.
 
 ## Write custom RDD
 
