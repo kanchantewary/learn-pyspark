@@ -334,6 +334,11 @@ Useful to define a name for a rdd. The name would be visible in DAG in Spark UI,
 ### collectAsMap
 returns an RDD of key-value pairs as dictionary
 
+### lookup
+
+### countByKey
+
+
 ## Performance Tuning
 
 a. avoid too few partitions. it would lead to less concurrency (and unused cores)  
