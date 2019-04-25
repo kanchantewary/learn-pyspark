@@ -209,9 +209,23 @@ Return an RDD created by coalescing all elements within each partition into a li
 
 ### groupByKey
 
-performs shuffle first. We need to apply map function further to derive the data.
+`#create
+r1 = sc.parallelize([("a",1),("b",2),("c",3),("d",4),("a",5),("c",6),("c",2)])
 
-See [this](https://databricks.gitbooks.io/databricks-spark-knowledge-base/content/best_practices/prefer_reducebykey_over_groupbykey.html)
+#groupbykey
+
+r3 = r1.groupByKey()
+
+print(r3.collect())
+
+#r3 rdd returns a collection of objects, which needs to be converted further to a list.
+
+r4 = r3.map(lambda x:(x[0],list(x[1])))
+
+print(r4.toDebugString().decode("utf-8"))
+print(r4.collect())`
+
+Note: performs shuffle first. We need to apply map function further to derive the data. We should use reduceByKey instead to achieve the same results. See [this](https://databricks.gitbooks.io/databricks-spark-knowledge-base/content/best_practices/prefer_reducebykey_over_groupbykey.html)
 
 ### id
 
@@ -305,6 +319,7 @@ j. keep data in serialized format, to minimize storage
 k. Commonly between 100 and 10,000 partitions
 l. Lower bound: At least ~2x number of cores in cluster
 m. Upper bound: Ensure tasks take at least 100ms
+n. Don't copy all elements of a large RDD to the driver. Collect will attempt to copy every single element in the RDD onto the single driver program, and then run out of memory and crash.Instead, you can write out the RDD to files or export the RDD to a database that is large enough to hold all the data.
 
 ## Write custom RDD
 
