@@ -52,3 +52,8 @@ SPARK_DAEMON_MEMORY: [default: 512 MB] Memory to allocate to the Spark master an
   	MEMORY_AND_DISK_SER_2 = StorageLevel(True, True, False, False, 2)
   	OFF_HEAP = StorageLevel(False, False, True, False, 1)
     
+### Configuration parameters
+
+See [this](https://spark.apache.org/docs/latest/configuration.html)
+
+
