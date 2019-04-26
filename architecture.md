@@ -31,7 +31,24 @@ https://open.mesosphere.com/advanced-course/
 
 ### spark-env.sh
 
-SPARK_WORKER_INSTANCES: [default: 1] # of worker instances to run on each machine
-SPARK_WORKER_CORES: [default: ALL] # of cores to allow Spark applications to use on the machine
-conf/spark-env.sh SPARK_WORKER_MEMORY: [default: TOTAL RAM – 1 GB] Total memory to allow Spark applications to use on the machine
+SPARK_WORKER_INSTANCES: [default: 1] # of worker instances to run on each machine  
+SPARK_WORKER_CORES: [default: ALL] # of cores to allow Spark applications to use on the machine  
+conf/spark-env.sh SPARK_WORKER_MEMORY: [default: TOTAL RAM – 1 GB] Total memory to allow Spark applications to use on the machine  
 SPARK_DAEMON_MEMORY: [default: 512 MB] Memory to allocate to the Spark master and worker daemons themselves
+
+### Storage Level
+
+2 is the replication factor.
+
+    DISK_ONLY = StorageLevel(True, False, False, False)
+  	DISK_ONLY_2 = StorageLevel(True, False, False, False, 2)
+  	MEMORY_ONLY = StorageLevel(False, True, False, True)
+  	MEMORY_ONLY_2 = StorageLevel(False, True, False, True, 2)
+  	MEMORY_ONLY_SER = StorageLevel(False, True, False, False)
+  	MEMORY_ONLY_SER_2 = StorageLevel(False, True, False, False, 2)
+  	MEMORY_AND_DISK = StorageLevel(True, True, False, True)
+  	MEMORY_AND_DISK_2 = StorageLevel(True, True, False, True, 2)
+  	MEMORY_AND_DISK_SER = StorageLevel(True, True, False, False)
+  	MEMORY_AND_DISK_SER_2 = StorageLevel(True, True, False, False, 2)
+  	OFF_HEAP = StorageLevel(False, False, True, False, 1)
+    
