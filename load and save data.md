@@ -1,5 +1,7 @@
 # Loading and saving data
 
+My learning: Better to focus on dataframe APIs for this part, they are more robust and provide more flexibility.
+
 ## text files
 
 `rdd = sc.textFile("file:///home/work/input.txt")`
@@ -20,9 +22,18 @@ dataframe APIs seem to be better. more on this later.
 
 ## Databases
 
-Cassendra, Hbase, Elasticsearch, JDBC
+Cassendra, Hbase, Elasticsearch, JDBC/ODBC, MongoDB etc.
 
 ## object files
 
 ## Hadoop Input and Output format
 
+## Parquet files
+
+## File Compression
+
+## hdfs
+
+## Amazon S3
+
+## 
