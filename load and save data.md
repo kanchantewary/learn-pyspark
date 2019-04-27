@@ -30,6 +30,10 @@ Cassendra, Hbase, Elasticsearch, JDBC/ODBC, MongoDB etc.
 
 ## Parquet files
 
+Parquet is an open source column-oriented data store that provides a variety of storage optimizations, especially for analytics workloads. It provides columnar compression, which saves storage space and allows for reading individual columns instead of entire files. Reading from a Parquet file will always be more efficient than JSON or CSV. Another advantage of Parquet is that it supports complex types.
+
+## ORC files
+
 ## File Compression
 
 ## hdfs
