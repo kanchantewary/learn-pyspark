@@ -1,6 +1,10 @@
 # Loading and saving data
 
-My learning: Better to focus on dataframe APIs for this part, they are more robust and provide more flexibility.
+My learning: Better to focus on dataframe APIs for this part, they are more robust and provide more flexibility.  
+general format to read:  
+`spark.read.format(...).option("key", "value").schema(...).load()`
+
+Refer [this](https://szczeles.github.io/Reading-JSON-CSV-and-XML-files-efficiently-in-Apache-Spark/) for a good summary.
 
 ## text files
 
@@ -40,4 +44,4 @@ Parquet is an open source column-oriented data store that provides a variety of 
 
 ## Amazon S3
 
-## 
+## Avro
