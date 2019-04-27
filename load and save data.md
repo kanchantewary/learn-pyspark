@@ -46,6 +46,8 @@ Parquet is an open source column-oriented data store that provides a variety of 
 
 ## ORC files
 
+ORC is a self-describing, type-aware columnar file format designed for Hadoop workloads. It is optimized for large streaming reads, but with integrated support for finding required rows quickly.  
+difference between ORC and Parquet? For the most part, they’re quite similar; the fundamental difference is that Parquet is further optimized for use with Spark, whereas ORC is further optimized for Hive.
 ## File Compression
 
 ## hdfs
