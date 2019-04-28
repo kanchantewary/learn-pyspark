@@ -1,0 +1,10 @@
+id,name,place
+1,shiva,kailash
+2,ram,ayodhya
+3,ganga,himalaya
+4,ravana,lanka
+5,vishnu,baikunth
+6,krishna
+7,pandava
+8,bali,kiskindha
+9,kansa,mathura,bad data,more bad data,

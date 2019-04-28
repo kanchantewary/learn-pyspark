@@ -4,3 +4,4 @@ ibm-s3-service-credentials.*
 venv
 __pycache__
 data/z1
+data/names-tsv.out
