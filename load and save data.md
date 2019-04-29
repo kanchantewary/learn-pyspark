@@ -51,7 +51,7 @@ difference between ORC and Parquet? For the most part, they’re quite similar; 
 ## File Compression
 
 ## hdfs
-
+Installed using [this](https://linuxconfig.org/how-to-install-hadoop-on-ubuntu-18-04-bionic-beaver-linux)
 ## Amazon S3
 
 ## Avro
