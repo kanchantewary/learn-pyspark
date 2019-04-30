@@ -51,7 +51,11 @@ difference between ORC and Parquet? For the most part, they’re quite similar; 
 ## File Compression
 
 ## hdfs
-Installed using [this](https://linuxconfig.org/how-to-install-hadoop-on-ubuntu-18-04-bionic-beaver-linux). Also, refer [this](http://www.michael-noll.com/tutorials/running-hadoop-on-ubuntu-linux-single-node-cluster/) for a better understanding of the architecture (but written for older hadoop version).
+
+Installed and configured hadoop,hdfs,yarn using [this](https://linuxconfig.org/how-to-install-hadoop-on-ubuntu-18-04-bionic-beaver-linux). Also, refer [this](http://www.michael-noll.com/tutorials/running-hadoop-on-ubuntu-linux-single-node-cluster/) for a better understanding of the architecture (but written for older hadoop version).
+Tip - Install using hadoop user. If run from a different user, ownership of hadoop folders should be modified using chown.
+
+`rdd.saveAsTextFile("hdfs://localhost:9000/test/sparkrdd.txt")`
 
 ## Amazon S3
 
