@@ -1,8 +1,21 @@
-1908  sudo dpkg --configure -a
- 1909  sudo apt-get install openssh-server
- 1910  sudo apt-get install openssh-client
+sudo dpkg --configure -a
+sudo apt-get install openssh-server
+sudo apt-get install openssh-client
+start-dfs.sh
+jps
+start-yarn.sh
+yarn-daemon.sh --config /opt/hadoop-2.9.2/etc/hadoop stop resourcemanager
+yarn-daemon.sh --config /opt/hadoop-2.9.2/etc/hadoop stop nodemanager
 
+#copy from local to hdfs:
+hadoop fs -copyFromLocal /opt/hadoop-2.9.2/logs/*.log /test
 
- 2062  yarn-daemon.sh --config /opt/hadoop-2.9.2/etc/hadoop stop resourcemanager
- 2063  yarn-daemon.sh --config /opt/hadoop-2.9.2/etc/hadoop stop nodemanager
+#create a group named spark, add two users hadoop and user, install members package to list users
+
+  133  sudo apt-get install members
+  134  members spark
+  135  sudo usermod -aG spark hadoop
+  136  members spark
+  137  sudo usermod -aG spark user
+  138  members spark
 
