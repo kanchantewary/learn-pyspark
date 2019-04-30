@@ -57,6 +57,7 @@ Tip - Install using hadoop user. If run from a different user, ownership of hado
 
 `rdd.saveAsTextFile("hdfs://localhost:9000/test/sparkrdd.txt")`
 
+If this path is already existing, the application would raise exception and fail. To overcome this, follow this [blog](https://diogoalexandrefranco.github.io/interacting-with-hdfs-from-pyspark/)
 ## Amazon S3
 
 ## Avro
