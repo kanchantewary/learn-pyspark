@@ -42,9 +42,9 @@ r1 = sc.parallelize(["spark","hadoop","mongo","hive","nifi"])
 #hdfs_delete('hdfs dfs -rm -r /test/errors.txt')
 
 
-from pyarrow import hdfs
-fs=hdfs.connect()
-fs.delete('/test/errors.txt')
+#from pyarrow import hdfs
+#fs=hdfs.connect()
+#fs.delete('/test/errors.txt')
 
 #r1.saveAsTextFile("hdfs://localhost:9000/test/sparkrdd.txt")
 
