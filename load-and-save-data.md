@@ -16,6 +16,8 @@ A class is never serialized only object of a class is serialized. Object seriali
 
 Deserialization is the reverse process: turning a stream of bytes into an object in memory.
 
+### Compression schemes
+
 ## text files
 
 `rdd = sc.textFile("file:///home/work/input.txt")`
