@@ -56,4 +56,6 @@ SPARK_DAEMON_MEMORY: [default: 512 MB] Memory to allocate to the Spark master an
 
 See [this](https://spark.apache.org/docs/latest/configuration.html)
 
-
+### Spark context cleaner
+https://jaceklaskowski.gitbooks.io/mastering-apache-spark/content/spark-service-contextcleaner.html
+apply and learn this
