@@ -1,5 +1,7 @@
 # Loading and saving data
 
+Refer ITVersity training [here](https://youtu.be/ICKs1ACqK8U)
+
 My learning: Better to focus on dataframe APIs for this part, they are more robust and provide more flexibility.  
 general format to read:  
 `spark.read.format(...).option("key", "value").schema(...).load()`
@@ -42,7 +44,8 @@ Cassendra, Hbase, Elasticsearch, JDBC/ODBC, MongoDB etc.
 
 ## Parquet files
 
-Parquet is an open source column-oriented data store that provides a variety of storage optimizations, especially for analytics workloads. It provides columnar compression, which saves storage space and allows for reading individual columns instead of entire files. Reading from a Parquet file will always be more efficient than JSON or CSV. Another advantage of Parquet is that it supports complex types.
+Parquet is an open source column-oriented data store that provides a variety of storage optimizations, especially for analytics workloads. It provides columnar compression, which saves storage space and allows for reading individual columns instead of entire files. Reading from a Parquet file will always be more efficient than JSON or CSV. Another advantage of Parquet is that it supports complex types.  
+Refer [this](https://spark.apache.org/docs/latest/sql-data-sources-parquet.html) later when working with spark SQL
 
 ## ORC files
 
@@ -58,6 +61,7 @@ Tip - Install using hadoop user. If run from a different user, ownership of hado
 `rdd.saveAsTextFile("hdfs://localhost:9000/test/sparkrdd.txt")`
 
 If this path is already existing, the application would raise exception and fail. To overcome this, follow this [blog](https://diogoalexandrefranco.github.io/interacting-with-hdfs-from-pyspark/)
+
 ## Amazon S3
 
 ## Avro
