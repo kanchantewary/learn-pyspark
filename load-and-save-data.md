@@ -21,6 +21,8 @@ Deserialization is the reverse process: turning a stream of bytes into an object
 `rdd = sc.textFile("file:///home/work/input.txt")`
 `rdd.saveAsTextFile()`
 
+See [this](https://databricks.com/session/why-you-should-care-about-data-layout-in-the-filesystem/) for a session on handling semi-structured data, bucketing, partitioning.
+
 ## JSON
 
 JavaScript Object Notation (JSON) is a text format for the serialization of structured data. It is derived from the object literals of JavaScript 
