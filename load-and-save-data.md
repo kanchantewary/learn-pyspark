@@ -1,6 +1,6 @@
 # Loading and saving data
 
-Refer ITVersity training here(https://youtu.be/ICKs1ACqK8U)
+Refer ITVersity training [here](https://youtu.be/ICKs1ACqK8U)
 
 My learning: Better to focus on dataframe APIs for this part, they are more robust and provide more flexibility.  
 general format to read:  
