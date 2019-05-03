@@ -18,6 +18,8 @@ Deserialization is the reverse process: turning a stream of bytes into an object
 
 ### Compression schemes
 
+if you need your compressed data to be splittable, BZip2 and LZO formats can be split. Snappy and GZip blocks are not splittable, but files with Snappy blocks inside a container file format such as SequenceFile or Avro can be split. Snappy is intended to be used with a container format, like SequenceFiles or Avro data files, rather than being used directly on plain text. Parquet stores data in rowgroups, which is equivalent to containers, hence parquet files using snappy is splittable. Refer [this](https://boristyukin.com/is-snappy-compressed-parquet-file-splittable/)
+
 ## text files
 
 `rdd = sc.textFile("file:///home/work/input.txt")`
