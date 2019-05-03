@@ -50,6 +50,7 @@ Cassendra, Hbase, Elasticsearch, JDBC/ODBC, MongoDB etc.
 
 Parquet is an open source column-oriented data store that provides a variety of storage optimizations, especially for analytics workloads. It provides columnar compression, which saves storage space and allows for reading individual columns instead of entire files. Reading from a Parquet file will always be more efficient than JSON or CSV. Another advantage of Parquet is that it supports complex types.  
 Refer [this](https://spark.apache.org/docs/latest/sql-data-sources-parquet.html) later when working with spark SQL
+Refer [this](https://github.com/apache/parquet-format) to understand parquet format in depth
 
 ## ORC files
 
