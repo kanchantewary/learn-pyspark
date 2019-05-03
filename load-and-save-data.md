@@ -58,6 +58,8 @@ ORC is a self-describing, type-aware columnar file format designed for Hadoop wo
 difference between ORC and Parquet? For the most part, they’re quite similar; the fundamental difference is that Parquet is further optimized for use with Spark, whereas ORC is further optimized for Hive.
 ## File Compression
 
+Refer [this](https://www.digitalocean.com/community/tutorials/an-introduction-to-file-compression-tools-on-linux-servers) to learn basics of compression techniques used in linux
+
 ## hdfs
 
 Installed and configured hadoop,hdfs,yarn using [this](https://linuxconfig.org/how-to-install-hadoop-on-ubuntu-18-04-bionic-beaver-linux). Also, refer [this](http://www.michael-noll.com/tutorials/running-hadoop-on-ubuntu-linux-single-node-cluster/) for a better understanding of the architecture (but written for older hadoop version).
