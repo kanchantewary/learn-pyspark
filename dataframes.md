@@ -18,9 +18,12 @@ Spark [Catalog API](https://jaceklaskowski.gitbooks.io/mastering-spark-sql/spark
 [Rule based optimizer]
 [Cost based optimizer](https://youtu.be/qS_aS99TjCM) and [this](https://youtu.be/WSIN6f-wHcQ)
 
-Optimization techniques:
+Optimization techniques (refer this [session](https://youtu.be/fp53QhSfQcI))
 a) Review spark UI, look for tasks that take much longer to run than others
 b) speculative tasks that are launching
-c) shards that have lot more input or shuffle output
+c) shards that have lot more input or shuffle output  
+d) use broadcast hash join over shuffle hash join, if one dataframe can fit into memory
+e) use explain to review the plan, add hint not chosen automatically (prefer parquet files as source if possible)
+f) 
 
 Refer this [blog](https://mapr.com/blog/tips-and-best-practices-to-take-advantage-of-spark-2-x/) from MapR
