@@ -29,6 +29,7 @@ See [A primer on Lambda](lambda-functions.md)
 
 ### Dataframes
 
+See [Dataframe notes](dataframes.md)
 ### Spark Internals, architecture, tuning
 
 ### Spark SQL
