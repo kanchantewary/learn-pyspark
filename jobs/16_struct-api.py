@@ -13,6 +13,8 @@ df.show()
 df1=df.select(df["number"]+10)
 
 df1.explain()
+df1.explain(extended="true")
+#df1.queryExecution.debug.codegen()
 
 df1.show()
 
@@ -36,7 +38,7 @@ df1.show()
 #p=StructField()
 
 #create a dataframe first
-
+"""
 df=spark.read.format("json").load("/home/user/workarea/projects/Spark-The-Definitive-Guide/data/flight-data/json/2015-summary.json")
 
 print(df.schema)
@@ -175,4 +177,4 @@ collectdf1.take(5)
 collectdf1.show(5)
 
 
-
+"""

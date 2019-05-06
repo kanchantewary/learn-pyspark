@@ -1,0 +1,3 @@
+jason bourne,45
+barak obama,60
+amitabh bachhan,75
