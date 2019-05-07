@@ -75,3 +75,7 @@ If this path is already existing, the application would raise exception and fail
 ## Amazon S3
 
 ## Avro
+
+## Apache Arrow
+
+Refer [this blog](https://towardsdatascience.com/a-gentle-introduction-to-apache-arrow-with-apache-spark-and-pandas-bb19ffe0ddae)
