@@ -21,6 +21,7 @@ This is coming soon,as per portal.
 [another gitbook](https://umbertogriffo.gitbooks.io/apache-spark-best-practices-and-tuning/content/)  
 [advices on certification](https://github.com/vivek-bombatkar/Databricks-Apache-Spark-2X-Certified-Developer.git)  
 [Tutorials by Mahmoud Parsian](https://github.com/mahmoudparsian/pyspark-tutorial)
+[Talks](http://dbmsmusings.blogspot.com/2017/10/apache-arrow-vs-parquet-and-orc-do-we.html) by [Daniel Abadi](http://www.cs.umd.edu/~abadi/)
 
 ### RDD
 
