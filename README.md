@@ -60,6 +60,8 @@ See [spark-streaming](spark-streaming.md)
 [hdfs](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html)  
 [External spark packages](http://spark-packages.org/)
 
+[TPC-DS Benchmarking](http://www.tpc.org/tpcds/default.asp)
+
 Blogs:
 http://blog.madhukaraphatak.com/
 
