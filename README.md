@@ -38,6 +38,8 @@ See [architecture](architecture.md)
 
 ### Spark SQL
 
+See [spark-sql](spark-sql.md)
+
 ### Spark Streaming
 
 See [spark-streaming](spark-streaming.md)
