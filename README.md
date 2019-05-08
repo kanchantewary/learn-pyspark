@@ -31,11 +31,16 @@ See [A primer on Lambda](lambda-functions.md)
 ### Dataframes
 
 See [Dataframe notes](dataframes.md)
+
 ### Spark Internals, architecture, tuning
+
+See [architecture](architecture.md)
 
 ### Spark SQL
 
 ### Spark Streaming
+
+See [spark-streaming](spark-streaming.md)
 
 ### GraphX
 
