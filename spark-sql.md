@@ -15,3 +15,5 @@ https://www.cloudera.com/documentation/enterprise/5-6-x/topics/cdh_ig_hive_metas
 https://www.learningjournal.guru/courses/spark/spark-foundation-training/spark-sql-database-and-table/
 
 [Language manual from databricks](https://docs.databricks.com/spark/latest/spark-sql/index.html)
+
+https://www.waitingforcode.com/apache-spark-sql/apache-spark-2.4.0-features-array-higher-order-functions/read
