@@ -17,3 +17,5 @@ https://www.learningjournal.guru/courses/spark/spark-foundation-training/spark-s
 [Language manual from databricks](https://docs.databricks.com/spark/latest/spark-sql/index.html)
 
 https://www.waitingforcode.com/apache-spark-sql/apache-spark-2.4.0-features-array-higher-order-functions/read
+
+[Hive SerDe](https://cwiki.apache.org/confluence/display/Hive/DeveloperGuide#DeveloperGuide-HiveSerDe) and [more about Hive](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL)
