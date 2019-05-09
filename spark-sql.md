@@ -18,4 +18,52 @@ https://www.learningjournal.guru/courses/spark/spark-foundation-training/spark-s
 
 https://www.waitingforcode.com/apache-spark-sql/apache-spark-2.4.0-features-array-higher-order-functions/read
 
-[Hive SerDe](https://cwiki.apache.org/confluence/display/Hive/DeveloperGuide#DeveloperGuide-HiveSerDe) and [more about Hive](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL)
+[Hive SerDe](https://cwiki.apache.org/confluence/display/Hive/DeveloperGuide#DeveloperGuide-HiveSerDe) and 
+Note: table properties are generic key value pairs, technically anything can be stored ('key'='value'). 
+
+### Command reference
+
+Refer [more](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL)
+
+    Alter Database
+    Alter Table or View
+    Alter Table Partitions
+    Analyze Table
+    Cache
+    Cache Table
+    Clear Cache
+    Convert To Delta (Delta Lake)
+    Create Database
+    Create Function
+    Create Table
+    Create View
+    Delete From (Delta Lake)
+    Describe Database
+    Describe Function
+    Describe Table
+    Drop Database
+    Drop Function
+    Drop Table
+    Explain
+    Fsck Repair Table (Delta Lake)
+    Functions
+    Insert
+    Load Data
+    Merge Into (Delta Lake)
+    Optimize (Delta Lake)
+    Refresh Table
+    Reset
+    Select
+    Set
+    Show Columns
+    Show Create Table
+    Show Databases
+    Show Functions
+    Show Partitions
+    Show Table Properties
+    Show Tables
+    Truncate Table
+    Uncache Table
+    Update (Delta Lake)
+    Use Database
+    Vacuum
