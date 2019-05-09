@@ -3,6 +3,7 @@
 #create the spark session object
 from pyspark.sql import SparkSession
 from pyspark.sql.types import *
+from pyspark.sql.functions import *
 
 spark = SparkSession.Builder().appName("create-df").master("local[3]").getOrCreate()
 sc=spark.sparkContext
