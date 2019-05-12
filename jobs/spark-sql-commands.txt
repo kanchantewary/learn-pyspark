@@ -195,4 +195,240 @@ spark-sql> explain select aggregate(array(1,2,3),0,(acc,x)->(acc+x),acc->acc*10)
 Project [aggregate([1,2,3], 0, lambdafunction((lambda acc#4330 + lambda x#4331), lambda acc#4330, lambda x#4331, false), lambdafunction((lambda acc#4332 * 10), lambda acc#4332, false)) AS aggregate(array(1, 2, 3), 0, lambdafunction((namedlambdavariable() + namedlambdavariable()), namedlambdavariable(), namedlambdavariable()), lambdafunction((namedlambdavariable() * 10), namedlambdavariable()))#4333]
 +- Scan OneRowRelation[]
 Time taken: 0.4 seconds, Fetched 1 row(s)
+----- May 10, 2019 ------
+create database if not exists mysparkdb location '/home/user/mysparkdb' with dbproperties ('owner'='kanchan tewary');
+
+
+spark-sql> insert into circle values ('10','red','a',''),('5','red','a',''),('7','green','a',''),('3','green','a',''),('15','yellow','a','');
+Time taken: 2.175 seconds
+spark-sql> insert into circle values ('34','red','a',''),('21','yellow','a',''),('78','green','a',''),('8','blue','a',''),('15','yellow','a','');
+Time taken: 1.644 seconds
+spark-sql> select * from circle;
+34	red	a	
+21	yellow	a	
+78	green	a	
+8	blue	a	
+15	yellow	a	
+10	red	a	
+5	red	a	
+7	green	a	
+3	green	a	
+15	yellow	a	
+Time taken: 1.998 seconds, Fetched 10 row(s)
+spark-sql> select color from circle;
+red
+yellow
+green
+blue
+yellow
+red
+red
+green
+green
+yellow
+Time taken: 1.095 seconds, Fetched 10 row(s)
+spark-sql> select distinct color from circle;
+green
+yellow
+red
+blue
+Time taken: 9.459 seconds, Fetched 4 row(s)
+spark-sql> explain select distinct color from circle;
+== Physical Plan ==
+*(2) HashAggregate(keys=[color#33], functions=[])
++- Exchange hashpartitioning(color#33, 200)
+   +- *(1) HashAggregate(keys=[color#33], functions=[])
+      +- *(1) Project [color#33]
+         +- *(1) FileScan orc mysparkdb.circle[color#33] Batched: true, Format: ORC, Location: InMemoryFileIndex[file:/home/user/mysparkdb/circle], PartitionFilters: [], PushedFilters: [], ReadSchema: struct<color:string>
+Time taken: 0.785 seconds, Fetched 1 row(s)
+spark-sql> explain extended select distinct color from circle;
+== Parsed Logical Plan ==
+'Distinct
++- 'Project ['color]
+   +- 'UnresolvedRelation `circle`
+
+== Analyzed Logical Plan ==
+color: string
+Distinct
++- Project [color#33]
+   +- SubqueryAlias `mysparkdb`.`circle`
+      +- Relation[diameter#32,color#33,owner#34,dummy#35] orc
+
+== Optimized Logical Plan ==
+Aggregate [color#33], [color#33]
++- Project [color#33]
+   +- Relation[diameter#32,color#33,owner#34,dummy#35] orc
+
+== Physical Plan ==
+*(2) HashAggregate(keys=[color#33], functions=[], output=[color#33])
++- Exchange hashpartitioning(color#33, 200)
+   +- *(1) HashAggregate(keys=[color#33], functions=[], output=[color#33])
+      +- *(1) Project [color#33]
+         +- *(1) FileScan orc mysparkdb.circle[color#33] Batched: true, Format: ORC, Location: InMemoryFileIndex[file:/home/user/mysparkdb/circle], PartitionFilters: [], PushedFilters: [], ReadSchema: struct<color:string>
+Time taken: 0.661 seconds, Fetched 1 row(s)
+spark-sql> explain select all  color from circle;
+== Physical Plan ==
+*(1) Project [color#33]
++- *(1) FileScan orc mysparkdb.circle[color#33] Batched: true, Format: ORC, Location: InMemoryFileIndex[file:/home/user/mysparkdb/circle], PartitionFilters: [], PushedFilters: [], ReadSchema: struct<color:string>
+Time taken: 0.824 seconds, Fetched 1 row(s)
+spark-sql> explain select all  color from circle where owner='a';
+== Physical Plan ==
+*(1) Project [color#33]
++- *(1) Filter (isnotnull(owner#34) && (owner#34 = a))
+   +- *(1) FileScan orc mysparkdb.circle[color#33,owner#34] Batched: true, Format: ORC, Location: InMemoryFileIndex[file:/home/user/mysparkdb/circle], PartitionFilters: [], PushedFilters: [IsNotNull(owner), EqualTo(owner,a)], ReadSchema: struct<color:string,owner:string>
+Time taken: 0.939 seconds, Fetched 1 row(s)
+spark-sql> explain select all  color from circle where owner='a' order by diameter;
+== Physical Plan ==
+*(2) Project [color#33]
++- *(2) Sort [diameter#32 ASC NULLS FIRST], true, 0
+   +- Exchange rangepartitioning(diameter#32 ASC NULLS FIRST, 200)
+      +- *(1) Project [color#33, diameter#32]
+         +- *(1) Filter (isnotnull(owner#34) && (owner#34 = a))
+            +- *(1) FileScan orc mysparkdb.circle[diameter#32,color#33,owner#34] Batched: true, Format: ORC, Location: InMemoryFileIndex[file:/home/user/mysparkdb/circle], PartitionFilters: [], PushedFilters: [IsNotNull(owner), EqualTo(owner,a)], ReadSchema: struct<diameter:int,color:string,owner:string>
+Time taken: 0.891 seconds, Fetched 1 row(s)
+spark-sql> select * from circle tablesample(50 PERCENT);
+34	red	a	
+21	yellow	a	
+78	green	a	
+8	blue	a	
+15	yellow	a	
+10	red	a	
+5	red	a	
+7	green	a	
+3	green	a	
+Time taken: 1.212 seconds, Fetched 9 row(s)
+
+spark-sql> select a.color,b.owner_name,b.owner_org from circle a,owner b where a.owner=b.owner_id;
+yellow	kanchan tewary	ibm
+green	kanchan tewary	ibm
+green	kanchan tewary	ibm
+red	kanchan tewary	ibm
+red	kanchan tewary	ibm
+yellow	kanchan tewary	ibm
+blue	kanchan tewary	ibm
+green	kanchan tewary	ibm
+yellow	kanchan tewary	ibm
+red	kanchan tewary	ibm
+Time taken: 3.972 seconds, Fetched 10 row(s)
+spark-sql> explain select a.color,b.owner_name,b.owner_org from circle a,owner b where a.owner=b.owner_id;
+== Physical Plan ==
+*(2) Project [color#33, owner_name#78, owner_org#79]
++- *(2) BroadcastHashJoin [owner#34], [owner_id#77], Inner, BuildLeft
+   :- BroadcastExchange HashedRelationBroadcastMode(List(input[1, string, true]))
+   :  +- *(1) Project [color#33, owner#34]
+   :     +- *(1) Filter isnotnull(owner#34)
+   :        +- *(1) FileScan orc mysparkdb.circle[color#33,owner#34] Batched: true, Format: ORC, Location: InMemoryFileIndex[file:/home/user/mysparkdb/circle], PartitionFilters: [], PushedFilters: [IsNotNull(owner)], ReadSchema: struct<color:string,owner:string>
+   +- *(2) Project [owner_id#77, owner_name#78, owner_org#79]
+      +- *(2) Filter isnotnull(owner_id#77)
+         +- *(2) FileScan parquet mysparkdb.owner[owner_id#77,owner_name#78,owner_org#79] Batched: true, Format: Parquet, Location: InMemoryFileIndex[file:/home/user/mysparkdb/owner], PartitionFilters: [], PushedFilters: [IsNotNull(owner_id)], ReadSchema: struct<owner_id:string,owner_name:string,owner_org:string>
+Time taken: 1.019 seconds, Fetched 1 row(s)
+spark-sql> explain select /*+ broadcast(owner) */ a.color,b.owner_name,b.owner_org from circle a,owner b where a.owner=b.owner_id;
+== Physical Plan ==
+*(2) Project [color#33, owner_name#78, owner_org#79]
++- *(2) BroadcastHashJoin [owner#34], [owner_id#77], Inner, BuildLeft
+   :- BroadcastExchange HashedRelationBroadcastMode(List(input[1, string, true]))
+   :  +- *(1) Project [color#33, owner#34]
+   :     +- *(1) Filter isnotnull(owner#34)
+   :        +- *(1) FileScan orc mysparkdb.circle[color#33,owner#34] Batched: true, Format: ORC, Location: InMemoryFileIndex[file:/home/user/mysparkdb/circle], PartitionFilters: [], PushedFilters: [IsNotNull(owner)], ReadSchema: struct<color:string,owner:string>
+   +- *(2) Project [owner_id#77, owner_name#78, owner_org#79]
+      +- *(2) Filter isnotnull(owner_id#77)
+         +- *(2) FileScan parquet mysparkdb.owner[owner_id#77,owner_name#78,owner_org#79] Batched: true, Format: Parquet, Location: InMemoryFileIndex[file:/home/user/mysparkdb/owner], PartitionFilters: [], PushedFilters: [IsNotNull(owner_id)], ReadSchema: struct<owner_id:string,owner_name:string,owner_org:string>
+Time taken: 1.211 seconds, Fetched 1 row(s)
+
+spark-sql> analyze table circle compute statistics for columns diameter;
+Time taken: 3.795 seconds
+spark-sql> describe extended circle;
+diameter	int	NULL
+color	string	NULL
+owner	string	NULL
+dummy	string	NULL
+		
+# Detailed Table Information		
+Database	mysparkdb	
+Table	circle	
+Owner	user	
+Created Time	Fri May 10 12:05:38 IST 2019	
+Last Access	Thu Jan 01 05:30:00 IST 1970	
+Created By	Spark 2.4.0	
+Type	MANAGED	
+Provider	ORC	
+Table Properties	[transient_lastDdlTime=1557473762]	
+Statistics	1181 bytes, 10 rows	
+Location	file:/home/user/mysparkdb/circle	
+Serde Library	org.apache.hadoop.hive.ql.io.orc.OrcSerde	
+InputFormat	org.apache.hadoop.hive.ql.io.orc.OrcInputFormat	
+OutputFormat	org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat	
+Storage Properties	[serialization.format=1]	
+Time taken: 0.634 seconds, Fetched 21 row(s)
+spark-sql> describe extended circle diameter;
+col_name	diameter
+data_type	int
+comment	NULL
+min	3
+max	78
+num_nulls	0
+distinct_count	9
+avg_col_len	4
+max_col_len	4
+histogram	NULL
+Time taken: 0.726 seconds, Fetched 10 row(s)
+spark-sql> 
+
+spark-sql> select * from circle lateral view explode(array(1,2,3)) my_view;
+34	red	a		1
+34	red	a		2
+34	red	a		3
+21	yellow	a		1
+21	yellow	a		2
+21	yellow	a		3
+78	green	a		1
+78	green	a		2
+78	green	a		3
+8	blue	a		1
+8	blue	a		2
+8	blue	a		3
+15	yellow	a		1
+15	yellow	a		2
+15	yellow	a		3
+10	red	a		1
+10	red	a		2
+10	red	a		3
+5	red	a		1
+5	red	a		2
+5	red	a		3
+7	green	a		1
+7	green	a		2
+7	green	a		3
+3	green	a		1
+3	green	a		2
+3	green	a		3
+15	yellow	a		1
+15	yellow	a		2
+15	yellow	a		3
+Time taken: 1.948 seconds, Fetched 30 row(s)
+
+spark-sql> select color, count(*) from circle group by color;
+green	3
+yellow	3
+red	3
+blue	1
+Time taken: 5.623 seconds, Fetched 4 row(s)
+
+spark-sql> select * from circle where color like 'r%';
+34	red	a	
+10	red	a	
+5	red	a	
+Time taken: 2.264 seconds, Fetched 3 row(s)
+spark-sql> explain select * from circle where color like 'r%';
+== Physical Plan ==
+*(1) Project [diameter#6, color#7, owner#8, dummy#9]
++- *(1) Filter (isnotnull(color#7) && StartsWith(color#7, r))
+   +- *(1) FileScan orc mysparkdb.circle[diameter#6,color#7,owner#8,dummy#9] Batched: true, Format: ORC, Location: InMemoryFileIndex[file:/home/user/mysparkdb/circle], PartitionFilters: [], PushedFilters: [IsNotNull(color), StringStartsWith(color,r)], ReadSchema: struct<diameter:int,color:string,owner:string,dummy:string>
+Time taken: 0.835 seconds, Fetched 1 row(s)
+spark-sql> explain select * from circle where color like '%ee%';
+== Physical Plan ==
+*(1) Project [diameter#6, color#7, owner#8, dummy#9]
++- *(1) Filter (isnotnull(color#7) && Contains(color#7, ee))
+   +- *(1) FileScan orc mysparkdb.circle[diameter#6,color#7,owner#8,dummy#9] Batched: true, Format: ORC, Location: InMemoryFileIndex[file:/home/user/mysparkdb/circle], PartitionFilters: [], PushedFilters: [IsNotNull(color), StringContains(color,ee)], ReadSchema: struct<diameter:int,color:string,owner:string,dummy:string>
+Time taken: 0.8 seconds, Fetched 1 row(s)
 
