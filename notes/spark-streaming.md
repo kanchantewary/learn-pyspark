@@ -11,6 +11,7 @@ supported output modes:
     a. Append (only add new records to the output sink)  
     b. Update (update changed records in place)  
     c. Complete (rewrite the full output)  
+The main idea behind Structured Streaming is to treat a stream of data as a table to which data is continuously appended. The job then periodically checks for new input data, process it, updates some internal state located in a state store if needed, and updates its result. 
 Other concepts:  
 Event time  
 Watermark  
