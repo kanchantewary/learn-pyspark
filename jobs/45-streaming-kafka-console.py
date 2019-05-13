@@ -1,6 +1,6 @@
-#read activity data, example from spark definitive guide. files are in json format.
-#spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.11:2.4.0 45-streaming-kafka.py [WORKING]
-#spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.12:2.4.0 45-streaming-kafka.py [THIS CAUSED ERROR - 'KafkaSourceProvider could not be instantiated']
+#read from a spark topic and write out in console
+#spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.11:2.4.0 45-streaming-kafka-console.py [WORKING]
+#spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.12:2.4.0 45-streaming-kafka-console.py [THIS CAUSED ERROR - 'KafkaSourceProvider could not be instantiated']
 
 #Before triggering spark submit, follow below steps to start writing into kafka topic
 #(1) go to /usr/local/zookeeper/bin/ and start zookeeper server
@@ -21,7 +21,7 @@ from pyspark.sql.types import *
 from pyspark.sql.functions import *
 
 spark = SparkSession\
-        .Builder().appName("streaming-kafka")\
+        .Builder().appName("streaming-kafka-console")\
         .master("local[3]")\
         .getOrCreate()
 
@@ -37,7 +37,8 @@ df=spark.readStream.format("kafka")\
 
 #streaming.show() [THIS DOES NOT WORK FOR STREAMING]
 
-df1=df.selectExpr("CAST(value) as string")
+df1=df.selectExpr("CAST(key as string)", "CAST(value as string)")
 
-df1.writeStream.format("console").option("truncate","false").start().awaitTermination()
+query = df1.writeStream.format("console").outputMode("append").start()
+query.awaitTermination()
 
