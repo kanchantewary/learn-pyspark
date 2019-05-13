@@ -18,3 +18,6 @@ Watermark
 Triggers for output
 Stateful processing
 concept of Window - tumbling window and sliding window
+
+# kafka integration
+Refer the [programming guide](https://spark.apache.org/docs/latest/structured-streaming-kafka-integration.html)
