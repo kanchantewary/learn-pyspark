@@ -13,10 +13,11 @@ supported output modes:
     c. Complete (rewrite the full output)  
 The main idea behind Structured Streaming is to treat a stream of data as a table to which data is continuously appended. The job then periodically checks for new input data, process it, updates some internal state located in a state store if needed, and updates its result. 
 Other concepts:  
-Event time  
-Watermark  
+Event time - time that is embedded in the data itself. Event data can be late or out of order. This means that the stream processing system must be able to handle out-of-order or late data
+Processing time - time at which the stream-processing system actually receives data  
+Watermark - amount of time following a given event or set of events after which we do not expect to see any more data from that time  
 Triggers for output
-Stateful processing
+Stateful processing, state store
 concept of Window - tumbling window and sliding window
 
 # kafka integration
