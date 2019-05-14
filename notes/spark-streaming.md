@@ -25,3 +25,4 @@ Refer the [programming guide](https://spark.apache.org/docs/latest/structured-st
 
 # Resources
 https://databricks.com/blog/2017/01/19/real-time-streaming-etl-structured-streaming-apache-spark-2-1.html
+https://youtu.be/bc4wfzuCbAo
