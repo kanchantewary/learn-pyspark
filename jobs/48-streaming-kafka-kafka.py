@@ -13,6 +13,9 @@
 #(5) start writing into kafka topic from console:
 #kafka-console-producer.sh --broker-list localhost:9092 --topic spark
 
+#create the target kafka topic
+#read the target topic in console
+#kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic from_spark --from-beginning
 #create spark session
 
 from pyspark.sql import SparkSession
@@ -41,6 +44,9 @@ query = df1.writeStream\
         .format("kafka")\
         .option("kafka.bootstrap.servers","localhost:9092")\
         .option("topic","from_spark")\
-        .option("checkpointLocation","hdfs://localhost:9000/test/").outputMode("append").start()
+        .option("checkpointLocation","/tmp")\
+        .outputMode("append").start()
+#        .option("checkpointLocation","hdfs://localhost:9000/test/")
+
 query.awaitTermination()
 
