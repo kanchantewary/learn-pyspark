@@ -39,6 +39,11 @@ df=spark.readStream.format("kafka")\
 
 df1=df.selectExpr("CAST(key as string)", "CAST(value as string)")
 
+#use of trigger to control output
+#activityCounts.writeStream.trigger(processingTime='5 seconds').format("console").outputMode("complete").start()
+#activityCounts.writeStream.trigger(once=True).format("console").outputMode("complete").start()
+#df.writeStream.format("console").trigger(continuous='1 second').start()
+
 query = df1.writeStream.format("console").outputMode("append").start()
 query.awaitTermination()
 
