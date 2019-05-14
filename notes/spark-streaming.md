@@ -22,3 +22,6 @@ concept of Window - tumbling window and sliding window
 
 # kafka integration
 Refer the [programming guide](https://spark.apache.org/docs/latest/structured-streaming-kafka-integration.html)
+
+# Resources
+https://databricks.com/blog/2017/01/19/real-time-streaming-etl-structured-streaming-apache-spark-2-1.html
