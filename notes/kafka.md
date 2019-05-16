@@ -29,6 +29,8 @@ message.max.bytes
 acks=0: Producers wont wait for acknowledgement (possible data loss)
 acks=1: Producers would wait for acknowledgement from leader (limited data loss)
 acks=all: Producers would wait for acknowledgement from both leader and replicas (no data loss)
+3. If a topic does not exist, broker will create it first with default configuration (config/server.properties) i.e. number of partitions and replication factor. A warning will be thrown.
+
 #### Message Keys
 Producers can choose to send a key with the message. It can be anything (string, number e.g.). Kafka would ensure that all messages with a key goes to same partition (uses hashing). If key is null, round-robin partitioning is used.
 
@@ -45,3 +47,4 @@ Consumer offsets - __consumer_offsets
 At most once
 At least once
 Exactly Once
+https://towardsdatascience.com/getting-started-with-apache-kafka-in-python-604b3250aa05
