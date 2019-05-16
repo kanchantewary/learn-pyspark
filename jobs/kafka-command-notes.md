@@ -30,3 +30,5 @@ drwxr-xr-x 2 user user 4096 May 16 15:10 topic2-0.190779af2f9f4213b4e2c220904347
 `sh kafka-console-producer.sh --broker-list localhost:9092 --topic topic1 --producer-property acks=all`  
 `sh kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic topic1 --from-beginning`  
 `kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic topic1 --group my-first-app`  
+`kafka-consumer-groups.sh --bootstrap-server localhost:9092 --list`  
+`kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group my-first-app`
