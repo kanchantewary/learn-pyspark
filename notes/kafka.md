@@ -8,6 +8,7 @@ c. https://www.udemy.com/user/stephane-maarek/
 1. Apache Kafka uses Zookeeper to store metadata about the Kafka cluster(broker and topic metadata), as well as consumer client details (consumer metadata, partition offsets)
 ### Zookeeper configuration
 2. replication factor - each partition will have one leader and multiple ISRs(In-sync replica)
+config/zookeeper.properties
 
 ### Kakfa Broker Configuration
 broker.id
