@@ -1,6 +1,7 @@
 # This job would read from twitter and write into a kafka topic in real-time
 #pip3 install tweepy
-# to run: python3 50-twitter-stdout.py /home/user/workarea/projects/learn-pyspark/config/twitter.conf dev
+# sh kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic tweets --from-beginning
+# to run: python3 51-twitter-kafka.py /home/user/workarea/projects/learn-pyspark/config/twitter.conf dev
 
 from tweepy import OAuthHandler,Stream,StreamListener
 
@@ -9,6 +10,11 @@ from tweepy import OAuthHandler,Stream,StreamListener
 import configparser as cp
 import time
 import sys
+
+from kafka import KafkaProducer, KafkaConsumer, TopicPartition
+from time import sleep
+from json import dumps
+
 
 conf = cp.ConfigParser()
 conf.read(sys.argv[1])
@@ -28,12 +34,16 @@ class StdOutListener(StreamListener):
     def on_error(self,status):
         print(status)
 
+class KafkaListener(StreamListener):
+    def on_data(self,data):
+        producer=KafkaProducer(bootstrap_servers=['localhost:9092'],value_serializer=lambda x:dumps(x).encode('utf-8'))
+        producer.send("tweets",value=data)
+
 if __name__ == '__main__':
 
     # This handles twitter authentication and connection to twitter streaming API
-    l = StdOutListener()
+    l = KafkaListener()
     auth=OAuthHandler(consumer_key,consumer_secret)
     auth.set_access_token(access_token,access_token_secret)
     stream=Stream(auth,l)
     stream.filter(track=['kafka','apache spark'])
-
