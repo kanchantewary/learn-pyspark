@@ -8,3 +8,4 @@ data/z1
 data/names-tsv.out
 data/*.orc/
 data/*.parquet/
+config/*.conf

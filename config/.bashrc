@@ -120,6 +120,7 @@ JAVA_HOME=/usr/lib/jvm/jdk1.8.0_181/
 CONFLUENT_HOME=/usr/local/confluent-5.0.0
 export PATH=$JAVA_HOME/bin:$CONFLUENT_HOME/bin:$PATH
 export JAVA_HOME
+export PATH=$PATH:$JAVA_HOME/bin
 export CONFLUENT_HOME
 export CONFLUENT_CURRENT=$CONFLUENT_HOME/var
 
@@ -137,3 +138,4 @@ export YARN_HOME=$HADOOP_HOME
 export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native/
 export PATH=$PATH:$HADOOP_HOME/sbin:$HADOOP_HOME/bin
 export HADOOP_OPTS="-Djava.library.path=$HADOOP_HOME/lib/native/"
+export PATH=/usr/local/kafka/bin:$PATH
