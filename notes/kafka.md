@@ -6,6 +6,8 @@ c. https://www.udemy.com/user/stephane-maarek/
 
 https://towardsdatascience.com/kafka-python-explained-in-10-lines-of-code-800e3e07dad1
 
+https://aseigneurin.github.io/
+
 ## Concepts
 1. Apache Kafka uses Zookeeper to store metadata about the Kafka cluster(broker and topic metadata), as well as consumer client details (consumer metadata, partition offsets)
 ### Zookeeper configuration
