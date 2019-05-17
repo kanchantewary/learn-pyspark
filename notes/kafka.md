@@ -52,3 +52,8 @@ At most once
 At least once
 Exactly Once
 https://towardsdatascience.com/getting-started-with-apache-kafka-in-python-604b3250aa05
+
+### ElasicSearch, kibana, bonsai
+
+https://docs.bonsai.io/article/102-python
+
