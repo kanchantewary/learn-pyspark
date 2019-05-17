@@ -4,6 +4,8 @@ a. Kafka Definitive Guide
 b. https://medium.com/@stephane.maarek/how-to-prepare-for-the-confluent-certified-developer-for-apache-kafka-ccdak-exam-ab081994da78
 c. https://www.udemy.com/user/stephane-maarek/
 
+https://towardsdatascience.com/kafka-python-explained-in-10-lines-of-code-800e3e07dad1
+
 ## Concepts
 1. Apache Kafka uses Zookeeper to store metadata about the Kafka cluster(broker and topic metadata), as well as consumer client details (consumer metadata, partition offsets)
 ### Zookeeper configuration
