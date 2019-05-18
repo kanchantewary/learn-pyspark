@@ -4,7 +4,6 @@
 # to run: python3 51-twitter-kafka.py /home/user/workarea/projects/learn-pyspark/config/twitter.conf dev
 
 from tweepy import OAuthHandler,Stream,StreamListener
-import tweepy
 
 # define variables to store user credentials to access twitter API, read the credentials from config file
 
@@ -13,11 +12,6 @@ import time
 import sys
 
 from kafka import KafkaProducer, KafkaConsumer, TopicPartition
-#from kafka.producer import SimpleProducer
-#from kafka.client import SimpleClient
-from time import sleep
-from json import dumps
-
 
 conf = cp.ConfigParser()
 conf.read(sys.argv[1])
@@ -33,20 +27,19 @@ topic_name='tweets'
 
 auth=OAuthHandler(consumer_key,consumer_secret)
 auth.set_access_token(access_token,access_token_secret)
-api=tweepy.API(auth)
 
-def get_twitter_data():
-    res = api.search("kafka or spark")
-    for i in res:
-        record=''
-        record+=str(i.user.id_str)
-        record+=';'
-    producer.send(topic_name,str.encode(record))
+class MyStreamListener(StreamListener):
 
-def periodic_work(interval):
-    while True:
-        get_twitter_data()
-        sleep(interval)
+    def on_data(self,data):
+        producer.send(topic_name,data.encode('utf-8'))
+        #print(data)
+        return True
+    def on_error(self,status):
+        print(status)
+        if status==420:
+            return False
 
-periodic_work(5)
+l=MyStreamListener()
+myStream = Stream(auth, l)
+myStream.filter(track=['kafka'],languages=['en'])
 
