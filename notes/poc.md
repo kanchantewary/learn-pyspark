@@ -6,3 +6,5 @@ Refer this [blog](http://adilmoujahid.com/posts/2014/07/twitter-analytics/) or [
 3. kafka-elasticsearch: write a python program to read a kafka topic and write into elasticsearch(bonsai hosted cluster)  
 4. elasticsearch-kibana: build some basic dashboard using the data  
 5. run them end to end to create real-time dashboard  
+
+Approach 2 - we write in ES straight from spark, like [here](https://www.bmc.com/blogs/write-apache-spark-elasticsearch-python/)
