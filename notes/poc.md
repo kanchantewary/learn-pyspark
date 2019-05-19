@@ -13,3 +13,5 @@ If we achieve the above steps, we would try to perform sentiment analysis using 
 
 
 https://github.com/darenr/python-kafka-elasticsearch
+https://tweepy.readthedocs.io/en/latest/
+https://dorianbg.wordpress.com/
