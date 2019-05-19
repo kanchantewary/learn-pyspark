@@ -10,3 +10,6 @@ Refer this [blog](http://adilmoujahid.com/posts/2014/07/twitter-analytics/) or [
 Approach 2 - we write in ES straight from spark, like [here](https://www.bmc.com/blogs/write-apache-spark-elasticsearch-python/)
 
 If we achieve the above steps, we would try to perform sentiment analysis using spark ML and plot the sentiment score in real-time using kibana. Refer this [post](https://towardsdatascience.com/sentiment-analysis-with-pyspark-bc8e83f80c35)
+
+
+https://github.com/darenr/python-kafka-elasticsearch
