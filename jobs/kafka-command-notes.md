@@ -32,3 +32,13 @@ drwxr-xr-x 2 user user 4096 May 16 15:10 topic2-0.190779af2f9f4213b4e2c220904347
 `kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic topic1 --group my-first-app`  
 `kafka-consumer-groups.sh --bootstrap-server localhost:9092 --list`  
 `kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group my-first-app`
+
+# faced errors while installing snappy. So following was done:
+ 2061  sudo apt-get install libsnappy-dev
+ sudo dpkg --configure -a #this didnt work. said error processing linux generic package, leaving unconfigured
+ sudo apt-get update #so we did this..still above did not work.
+ sudo apt-get -f install #this fixed the issue 
+ sudo apt-get install libsnappy-dev #now, it works
+ pip3 install python-snappy #snappy codec was installed. this is required to use snappy compression type in kafka producer
+
+

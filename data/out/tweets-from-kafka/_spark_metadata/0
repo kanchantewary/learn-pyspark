@@ -1,0 +1,4 @@
+v1
+{"path":"file:///home/user/workarea/projects/learn-pyspark/data/out/tweets-from-kafka/part-00000-bd58b736-3b7a-4386-9440-a1b7b22f9423-c000.snappy.parquet","size":18901,"isDir":false,"modificationTime":1558271376000,"blockReplication":1,"blockSize":33554432,"action":"add"}
+{"path":"file:///home/user/workarea/projects/learn-pyspark/data/out/tweets-from-kafka/part-00001-37926198-b919-40bf-a508-599f44907a81-c000.snappy.parquet","size":32754,"isDir":false,"modificationTime":1558271376000,"blockReplication":1,"blockSize":33554432,"action":"add"}
+{"path":"file:///home/user/workarea/projects/learn-pyspark/data/out/tweets-from-kafka/part-00002-5bd04086-8b84-4274-9af7-e3a021cfb9a5-c000.snappy.parquet","size":28822,"isDir":false,"modificationTime":1558271376000,"blockReplication":1,"blockSize":33554432,"action":"add"}

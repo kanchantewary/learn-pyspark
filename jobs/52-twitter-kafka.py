@@ -1,7 +1,7 @@
 # This job would read from twitter and write into a kafka topic in real-time
 #pip3 install tweepy
 # sh kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic tweets --from-beginning
-# to run: python3 51-twitter-kafka.py /home/user/workarea/projects/learn-pyspark/config/twitter.conf dev
+# to run: python3 52-twitter-kafka.py /home/user/workarea/projects/learn-pyspark/config/twitter.conf dev
 
 from tweepy import OAuthHandler,Stream,StreamListener
 
@@ -22,7 +22,7 @@ consumer_secret=conf.get(env,'consumer_secret')
 access_token=conf.get(env,'access_token')
 access_token_secret=conf.get(env,'access_token_secret')
 
-producer=KafkaProducer(bootstrap_servers='localhost:9092')
+producer=KafkaProducer(bootstrap_servers='localhost:9092',compression_type='snappy')
 topic_name='tweets'
 
 auth=OAuthHandler(consumer_key,consumer_secret)
@@ -41,5 +41,5 @@ class MyStreamListener(StreamListener):
 
 l=MyStreamListener()
 myStream = Stream(auth, l)
-myStream.filter(track=['kafka'],languages=['en'])
+myStream.filter(track=['india election'],languages=['en'])
 

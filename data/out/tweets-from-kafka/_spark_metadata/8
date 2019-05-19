@@ -1,0 +1,2 @@
+v1
+{"path":"file:///home/user/workarea/projects/learn-pyspark/data/out/tweets-from-kafka/part-00000-8ee34911-9e47-4d48-9fb0-8e921615b16b-c000.snappy.parquet","size":2863,"isDir":false,"modificationTime":1558271410000,"blockReplication":1,"blockSize":33554432,"action":"add"}

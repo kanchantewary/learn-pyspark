@@ -33,20 +33,33 @@ spark.conf.set("spark.sql.shuffle.partitions",5)
 
 df=spark.readStream.format("kafka")\
         .option("kafka.bootstrap.servers","localhost:9092")\
-        .option("subscribe","spark")\
+        .option("subscribe","tweets")\
         .option("startingOffsets","earliest")\
         .load()
 
 
 df1=df.selectExpr("CAST(key as string)", "CAST(value as string)")
 
+"""
 query = df1.writeStream\
         .format("kafka")\
         .option("kafka.bootstrap.servers","localhost:9092")\
         .option("topic","from_spark")\
         .option("checkpointLocation","/tmp")\
         .outputMode("append").start()
-#        .option("checkpointLocation","hdfs://localhost:9000/test/")
+
+
+query = df1.writeStream\
+        .format("console")\
+        .start()
+
+"""
+
+query = df1.writeStream\
+        .format("parquet")\
+        .option("path","/home/user/workarea/projects/learn-pyspark/data/out/tweets-from-kafka")\
+        .option("checkpointLocation","/tmp")\
+        .start()
 
 query.awaitTermination()
 
