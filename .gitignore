@@ -9,3 +9,4 @@ data/names-tsv.out
 data/*.orc/
 data/*.parquet/
 config/*.conf
+data/out

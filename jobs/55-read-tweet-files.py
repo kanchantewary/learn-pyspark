@@ -13,7 +13,11 @@ tweets = spark.read.parquet("/home/user/workarea/projects/learn-pyspark/data/out
 
 tweets.printSchema()
 
-schema = tweets.select(schema_of_json(col("value")))
+schema = tweets.select(schema_of_json(str(col("value"))))
+
+print(schema)
+
+tweets.withColumn('json',from_json(col('value'),schema)).show(5)
 
 #tweets.show(5)
 

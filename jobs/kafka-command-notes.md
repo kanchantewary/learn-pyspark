@@ -1,3 +1,10 @@
+#Before triggering spark submit, follow below steps to start writing into kafka topic
+#(1) go to /usr/local/zookeeper/bin/ and start zookeeper server
+#zkServer.sh start
+#(2) go to /usr/local/kafka/bin/ and start kafka server
+#kafka-server-start.sh -daemon /usr/local/kafka/config/server.properties
+
+
 `sh kafka-topics.sh --zookeeper localhost:2181 --topic topic1 --create --partitions 3 --replication-factor 1`  
 `sh kafka-topics.sh --zookeeper localhost:2181 --list`  
 `sh kafka-topics.sh --zookeeper localhost:2181 --topic topic1 --describe`  
@@ -41,4 +48,6 @@ drwxr-xr-x 2 user user 4096 May 16 15:10 topic2-0.190779af2f9f4213b4e2c220904347
  sudo apt-get install libsnappy-dev #now, it works
  pip3 install python-snappy #snappy codec was installed. this is required to use snappy compression type in kafka producer
 
+# faced error while running streaming job in spark, saying "19.compact doesn't exist when compacting batch 29"
 
+resolution - clear the checkpoint directory, or assign a new path and then resubmit the application 

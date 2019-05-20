@@ -47,7 +47,7 @@ query = df1.writeStream\
         .option("topic","from_spark")\
         .option("checkpointLocation","/tmp")\
         .outputMode("append").start()
-
+"""
 
 query = df1.writeStream\
         .format("console")\
@@ -58,8 +58,9 @@ query = df1.writeStream\
 query = df1.writeStream\
         .format("parquet")\
         .option("path","/home/user/workarea/projects/learn-pyspark/data/out/tweets-from-kafka")\
-        .option("checkpointLocation","/tmp")\
+        .option("checkpointLocation","/tmp/pyspark-48-checkpoint-dir")\
         .start()
 
+"""
 query.awaitTermination()
 
