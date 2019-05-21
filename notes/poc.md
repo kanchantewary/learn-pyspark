@@ -11,6 +11,10 @@ Approach 2 - we write in ES straight from spark, like [here](https://www.bmc.com
 
 If we achieve the above steps, we would try to perform sentiment analysis using spark ML and plot the sentiment score in real-time using kibana. Refer this [post](https://towardsdatascience.com/sentiment-analysis-with-pyspark-bc8e83f80c35)
 
+https://hortonworks.com/tutorial/building-a-sentiment-analysis-application/
+https://databricks.com/blog/2017/10/19/introducing-natural-language-processing-library-apache-spark.html
+https://developer.ibm.com/code/2018/05/01/learn-create-python-web-app-uses-watson-natural-language-classifier/
+
 
 https://github.com/darenr/python-kafka-elasticsearch
 https://tweepy.readthedocs.io/en/latest/
