@@ -21,6 +21,7 @@
 from pyspark.sql import SparkSession
 from pyspark.sql.types import *
 from pyspark.sql.functions import *
+import json
 
 spark = SparkSession\
         .Builder().appName("streaming-kafka-console")\
@@ -40,20 +41,38 @@ df=spark.readStream.format("kafka")\
 
 df1=df.selectExpr("CAST(key as string)", "CAST(value as string)")
 
-"""
-query = df1.writeStream\
+#pass custome schema from the file generated earlier, convert to struct type
+
+
+tweet_schema_json = spark.read.text("/home/user/workarea/projects/learn-pyspark/config/tweets.schema").first()[0]
+tweet_schema = StructType.fromJson(json.loads(tweet_schema_json))
+
+
+df2=df1.withColumn('json',from_json(col('value'),tweet_schema))
+
+df3 = df2.withColumn('text',substring_index(col('json.text'),':',-1))
+#t2.printSchema()
+
+#t3 = t2.withColumn("lang",detect_tweet_lang(t2["text"].cast("string"))).select('text','lang')
+df4 = df3.withColumn("lang",lit("en")).select('text')
+#t3.printSchema()
+
+df5=df4.selectExpr("CAST(value as string)")
+
+query = df4.writeStream\
         .format("kafka")\
         .option("kafka.bootstrap.servers","localhost:9092")\
         .option("topic","from_spark")\
-        .option("checkpointLocation","/tmp")\
+        .option("checkpointLocation","/tmp/pyspark-48-checkpoint-dir")\
         .outputMode("append").start()
+
 """
 
-query = df1.writeStream\
+query = df4.writeStream\
         .format("console")\
         .start()
 
-"""
+
 
 query = df1.writeStream\
         .format("parquet")\
