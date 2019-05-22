@@ -2,6 +2,9 @@
 ## Resources
 Chapter 4, definitive guide  
 dataframes and datasets are two structured collections that spark have.  
+
+https://docs.databricks.com/spark/latest/dataframes-datasets/introduction-to-dataframes-python.html
+
 dataframes = untyped, spark checks type at runtime. [It is dataset of type Row](https://databricks.com/blog/2016/06/22/apache-spark-key-terms-explained.html)  
 datasets = typed, spark checks type at compile time, only available in JVM based languages (scala, java)
 [IBM watson studio notebook](https://dataplatform.cloud.ibm.com/exchange/public/entry/view/5ad1c820f57809ddec9a040e37b2bd55)
