@@ -29,4 +29,6 @@
 
 #repartition and coalesce
 
-#
+#functions:
+col,column
+

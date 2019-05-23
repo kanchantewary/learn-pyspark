@@ -50,13 +50,17 @@ tweets = spark.read.parquet("/home/user/workarea/projects/learn-pyspark/data/out
 
 tweets1=tweets.withColumn('json',from_json(col('value'),tweet_schema))
 
-t2 = tweets1.withColumn('text',substring_index(col('json.text'),':',-1))
+t2 = tweets1.withColumn('text',substring_index(col('json.text'),':',-1)).select('text')
 #t2.printSchema()
 
 #t3 = t2.withColumn("lang",detect_tweet_lang(t2["text"].cast("string"))).select('text','lang')
 t3 = t2.withColumn("lang",lit("en")).select('text','lang')
 t3.printSchema()
 
+#convert the rdd to json
+
+rdd_t3 = t3.toJSON()
+print(rdd_t3.take(5))
 
 #.write.format("csv").mode("overwrite").save("/home/user/workarea/projects/learn-pyspark/data/out/tweets-text")
 

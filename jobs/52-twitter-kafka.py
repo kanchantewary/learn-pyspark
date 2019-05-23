@@ -22,7 +22,7 @@ consumer_secret=conf.get(env,'consumer_secret')
 access_token=conf.get(env,'access_token')
 access_token_secret=conf.get(env,'access_token_secret')
 
-producer=KafkaProducer(bootstrap_servers='localhost:9092',compression_type='snappy')
+producer=KafkaProducer(bootstrap_servers='localhost:9092',compression_type='snappy',acks='all',batch_size=(64*1024),linger_ms=1000,max_in_flight_requests_per_connection=5)
 topic_name='tweets'
 
 auth=OAuthHandler(consumer_key,consumer_secret)
