@@ -27,13 +27,30 @@ log.retention.minutes
 log.retention.ms
 log.retention.bytes
 message.max.bytes
+
 ### Kafka Producer
 1. Producers write to data to topics (which is made up of multiple partitions). Producers automatically know to which broker and partition it should write to. In case of broker failures, producers will automatically recover.
 2. Producers can choose to receive acknowledgement of data writes from brokers, There are 3 write modes:
 acks=0: Producers wont wait for acknowledgement (possible data loss)
-acks=1: Producers would wait for acknowledgement from leader (limited data loss)
-acks=all: Producers would wait for acknowledgement from both leader and replicas (no data loss)
+acks=1: Producers would wait for acknowledgement from leader (limited data loss). replication is not guaranteed. if ack is not received, producer may retry.
+acks=all: Producers would wait for acknowledgement from both leader and replicas (no data loss). it must be used in conjunction with min.insync.replicas
+exception of NOT_ENOUGH_REPLICAS would be thrown
+
 3. If a topic does not exist, broker will create it first with default configuration (config/server.properties) i.e. number of partitions and replication factor. A warning will be thrown.
+
+retries
+
+max.in.flight.requests.per.connection
+
+idempotent producer
+set enable.idempotence to true
+
+compression_type - snappy,lz4,gzip
+
+linger.ms - number of ms a producer would be waiting before sending a batch out
+batch_size - max no of bytes that will be included in a batch. default is 16 KB, try setting this to 32 or 64 KB.
+buffer.memory
+max.block.ms
 
 #### Message Keys
 Producers can choose to send a key with the message. It can be anything (string, number e.g.). Kafka would ensure that all messages with a key goes to same partition (uses hashing). If key is null, round-robin partitioning is used.
@@ -41,6 +58,10 @@ Producers can choose to send a key with the message. It can be anything (string,
 bootstrap.servers
 key.serializer
 value.serializer
+
+exception handling,error logging
+try tweeting a tweet on the subject being followed, and see if it appears in real-time
+stopping application, closing producer
 
 ### Kafka Consumers
 consumer
