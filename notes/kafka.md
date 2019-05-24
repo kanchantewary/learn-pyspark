@@ -95,3 +95,4 @@ https://docs.bonsai.io/article/102-python
 
 
 http://www.zekelabs.com/
+https://github.com/zekelabs/kafka-cassandra-tutorial
