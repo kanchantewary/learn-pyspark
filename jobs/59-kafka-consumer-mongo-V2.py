@@ -25,7 +25,9 @@ tweets=db.tweets_from_kafka
 
 kafka_topic='tweets'
 
-consumer1=KafkaConsumer(kafka_topic, group_id='mongo-group-1',bootstrap_servers='localhost:9092',auto_offset_reset='earliest',consumer_timeout_ms=1000)
+consumer=KafkaConsumer(bootstrap_servers='localhost:9092',auto_offset_reset='earliest',consumer_timeout_ms=1000)
+
+consumer.subscribe(['my_topic'])
 
 for msg in consumer1:
     msg_json=json.loads(msg.value)

@@ -51,3 +51,9 @@ drwxr-xr-x 2 user user 4096 May 16 15:10 topic2-0.190779af2f9f4213b4e2c220904347
 # faced error while running streaming job in spark, saying "19.compact doesn't exist when compacting batch 29"
 
 resolution - clear the checkpoint directory, or assign a new path and then resubmit the application 
+
+ sh kafka-configs.sh --zookeeper localhost:2181 --entity-type topics --entity-name configure_topic --add-config min.insync.replicas=2 --alter
+ sh kafka-topics.sh --zookeeper localhost:2181 --topic configure_topic --describe
+ sh kafka-configs.sh --zookeeper localhost:2181 --entity-type topics --entity-name configure_topic --add-config compression.type='snappy' --alter
+ sh kafka-topics.sh --zookeeper localhost:2181 --topic configure_topic --describe
+
