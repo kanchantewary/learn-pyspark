@@ -74,6 +74,21 @@ At least once
 Exactly Once
 https://towardsdatascience.com/getting-started-with-apache-kafka-in-python-604b3250aa05
 
+configuration
+max_poll_records 
+enable_auto_commit 
+auto_offset_reset 
+max_in_flight_requests_per_connection 
+#### batching - 
+dealing with null pointer exception
+reset consumer offset
+offset.retention.minutes
+
+### Kafka Connect
+
+### Schema Registry
+
+
 ### ElasicSearch, kibana, bonsai
 
 https://docs.bonsai.io/article/102-python
