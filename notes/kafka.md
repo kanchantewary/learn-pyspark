@@ -96,3 +96,11 @@ https://docs.bonsai.io/article/102-python
 
 http://www.zekelabs.com/
 https://github.com/zekelabs/kafka-cassandra-tutorial
+
+
+log.segment.bytes
+log.segment.ms
+log cleanup policy
+log.cleanup.backoff.ms
+log.retention.hours
+log.retention.bytes
