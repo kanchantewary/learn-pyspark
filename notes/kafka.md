@@ -16,18 +16,19 @@ decouples data streams and systems. A traditional approach would need peer to pe
 ### Concepts
 
 Topic - stream of data. topics are split into partitions.each partition is ordered. Each messege in a partition is assigned an offset (incremental id). messeges can be stored in a topic for a finite amount of time (default is one week)
-messeges in a topic are immutable (can not be updated). Data is assigned a partition randomly (if a key is not specified) or based on hashing algorithm (on the key specified).
+messeges in a topic are immutable (can not be updated). Data is assigned a partition randomly i.e. round-robin partitioning (if a key is not specified) or based on hashing algorithm (on the key specified).
 
 A kafka cluster consists of one or multiple brokers (servers). Brokers are identified by a numeric id
 
-replication factor - 
+replication factor - each partition will have one leader and multiple ISRs(In-sync replica). The broker which is the leader will receive data and serve to other replicas.  
+If a leader goes down, the replica broker becomes the leader for that partition.
 
-creating multiple brokers
-https://www.michael-noll.com/blog/2013/03/13/running-a-multi-broker-apache-kafka-cluster-on-a-single-node/
 
-1. Apache Kafka uses Zookeeper to store metadata about the Kafka cluster(broker and topic metadata), as well as consumer client details (consumer metadata, partition offsets)
+See [creating multiple brokers](https://www.michael-noll.com/blog/2013/03/13/running-a-multi-broker-apache-kafka-cluster-on-a-single-node/)
+
+
 ### Zookeeper configuration
-2. replication factor - each partition will have one leader and multiple ISRs(In-sync replica)
+Apache Kafka uses Zookeeper to store metadata about the Kafka cluster(broker and topic metadata), as well as consumer client details (consumer metadata, partition offsets)
 config/zookeeper.properties
 
 ### Kakfa Broker Configuration
@@ -80,14 +81,12 @@ try tweeting a tweet on the subject being followed, and see if it appears in rea
 stopping application, closing producer
 
 ### Kafka Consumers
-consumer
-consumer groups
-offsets
-Consumer offsets - __consumer_offsets
-#### Delivery Simantics for consumers  
-At most once
-At least once
-Exactly Once
+consumer will always read data in order per partition (as per offsets). However, across partitions, data may not be ordered. Each consumer within a consumer group reads from an exclusive partition. If there are more number of consumers than partitions, some consumers would be inactive.
+ConsumerCoordinator, ConsumerGroupCoordinator
+
+#### Consumer Offsets
+When a consumer reads data from a topic, it needs to commit the offsets. Offsets are stored in a special kafka topic named (__consumer_offsets). Consumers can choose when to commit the offsets - At most once, At least once, Exactly Once
+
 https://towardsdatascience.com/getting-started-with-apache-kafka-in-python-604b3250aa05
 
 configuration
