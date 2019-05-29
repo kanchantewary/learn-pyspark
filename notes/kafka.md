@@ -138,3 +138,5 @@ log cleanup policy
 log.cleanup.backoff.ms
 log.retention.hours
 log.retention.bytes
+
+https://www.confluent.io/blog/avro-kafka-data/
