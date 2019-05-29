@@ -5,10 +5,15 @@ b. https://medium.com/@stephane.maarek/how-to-prepare-for-the-confluent-certifie
 c. https://www.udemy.com/user/stephane-maarek/
 
 https://towardsdatascience.com/kafka-python-explained-in-10-lines-of-code-800e3e07dad1
+https://github.com/simplesteph/kafka-beginners-course
 
 https://aseigneurin.github.io/
 
-## Concepts
+### Why Apache Kafka
+
+decouples data streams and systems. A traditional approach would need peer to peer integration, which would increase the number of integration points as more number of source and target systems are added in the network, increasing complexity (protocol, file format, schema evolution). We can attain horizontal scalability by adding more number of brokers. Kafka would be the data transporter in the overall system architecture.
+
+### Concepts
 1. Apache Kafka uses Zookeeper to store metadata about the Kafka cluster(broker and topic metadata), as well as consumer client details (consumer metadata, partition offsets)
 ### Zookeeper configuration
 2. replication factor - each partition will have one leader and multiple ISRs(In-sync replica)
