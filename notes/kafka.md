@@ -1,7 +1,7 @@
 # Kafka
 Resources:  
-a. Kafka Definitive Guide
-b. https://medium.com/@stephane.maarek/how-to-prepare-for-the-confluent-certified-developer-for-apache-kafka-ccdak-exam-ab081994da78
+a. Kafka Definitive Guide  
+b. [Certification] (https://medium.com/@stephane.maarek/how-to-prepare-for-the-confluent-certified-developer-for-apache-kafka-ccdak-exam-ab081994da78)
 c. https://www.udemy.com/user/stephane-maarek/
 
 https://towardsdatascience.com/kafka-python-explained-in-10-lines-of-code-800e3e07dad1
@@ -85,9 +85,12 @@ consumer will always read data in order per partition (as per offsets). However,
 ConsumerCoordinator, ConsumerGroupCoordinator
 
 #### Consumer Offsets
-When a consumer reads data from a topic, it needs to commit the offsets. Offsets are stored in a special kafka topic named (__consumer_offsets). Consumers can choose when to commit the offsets - At most once, At least once, Exactly Once
+When a consumer reads data from a topic, it needs to commit the offsets. Offsets are stored in a special kafka topic named *__consumer_offsets*. Consumers can choose when to commit the offsets - *At most once*, *At least once*(preferred), *Exactly Once*
+
 
 https://towardsdatascience.com/getting-started-with-apache-kafka-in-python-604b3250aa05
+https://medium.com/@durgaswaroop/a-practical-introduction-to-kafka-storage-internals-d5b544f6925f
+Refer details of kafka protocol [here](https://cwiki.apache.org/confluence/display/KAFKA/A+Guide+To+The+Kafka+Protocol)
 
 configuration
 max_poll_records 
