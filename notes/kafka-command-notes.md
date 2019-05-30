@@ -67,3 +67,9 @@ env JMX_PORT=10000 kafka-server-start.sh /usr/local/kafka/config/server1.propert
 env JMX_PORT=10001 kafka-server-start.sh /usr/local/kafka/config/server2.properties
 
 # run jps to see if multiple kafka processes are running
+
+# console producer and consumers - more options
+`kafka-console-producer --broker-list 127.0.0.1:9092 --topic first_topic --property parse.key=true --property key.separator=,`
+    > key,value
+    > another key,another value
+`kafka-console-consumer --bootstrap-server 127.0.0.1:9092 --topic first_topic --from-beginning --property print.key=true --property key.separator=,`
