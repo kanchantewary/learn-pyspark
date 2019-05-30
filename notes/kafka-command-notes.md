@@ -40,7 +40,7 @@ drwxr-xr-x 2 user user 4096 May 16 15:10 topic2-0.190779af2f9f4213b4e2c220904347
 `kafka-consumer-groups.sh --bootstrap-server localhost:9092 --list`  
 `kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group my-first-app`
 
-# faced errors while installing snappy. So following was done:
+### faced errors while installing snappy. So following was done:
  2061  sudo apt-get install libsnappy-dev
  sudo dpkg --configure -a #this didnt work. said error processing linux generic package, leaving unconfigured
  sudo apt-get update #so we did this..still above did not work.
@@ -48,7 +48,7 @@ drwxr-xr-x 2 user user 4096 May 16 15:10 topic2-0.190779af2f9f4213b4e2c220904347
  sudo apt-get install libsnappy-dev #now, it works
  pip3 install python-snappy #snappy codec was installed. this is required to use snappy compression type in kafka producer
 
-# faced error while running streaming job in spark, saying "19.compact doesn't exist when compacting batch 29"
+### faced error while running streaming job in spark, saying "19.compact doesn't exist when compacting batch 29"
 
 resolution - clear the checkpoint directory, or assign a new path and then resubmit the application 
 
@@ -57,18 +57,18 @@ resolution - clear the checkpoint directory, or assign a new path and then resub
  sh kafka-configs.sh --zookeeper localhost:2181 --entity-type topics --entity-name configure_topic --add-config compression.type='snappy' --alter
  sh kafka-topics.sh --zookeeper localhost:2181 --topic configure_topic --describe
 
-# install tree package to view directory structure in tree format
+### install tree package to view directory structure in tree format
 
 sudo apt-get install tree
 
-# create multiple brokers
+### create multiple brokers
 
 env JMX_PORT=10000 kafka-server-start.sh /usr/local/kafka/config/server1.properties
 env JMX_PORT=10001 kafka-server-start.sh /usr/local/kafka/config/server2.properties
 
-# run jps to see if multiple kafka processes are running
+### run jps to see if multiple kafka processes are running
 
-# console producer and consumers - more options
+### console producer and consumers - more options
 `kafka-console-producer --broker-list 127.0.0.1:9092 --topic first_topic --property parse.key=true --property key.separator=,`
     > key,value
     > another key,another value
