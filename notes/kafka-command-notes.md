@@ -57,3 +57,13 @@ resolution - clear the checkpoint directory, or assign a new path and then resub
  sh kafka-configs.sh --zookeeper localhost:2181 --entity-type topics --entity-name configure_topic --add-config compression.type='snappy' --alter
  sh kafka-topics.sh --zookeeper localhost:2181 --topic configure_topic --describe
 
+# install tree package to view directory structure in tree format
+
+sudo apt-get install tree
+
+# create multiple brokers
+
+env JMX_PORT=10000 kafka-server-start.sh /usr/local/kafka/config/server1.properties
+env JMX_PORT=10001 kafka-server-start.sh /usr/local/kafka/config/server2.properties
+
+# run jps to see if multiple kafka processes are running
