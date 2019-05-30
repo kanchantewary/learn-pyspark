@@ -103,6 +103,9 @@ Remember that, as long as number of partitions remain constant for a topic, the 
 #### Consumer Offsets
 When a consumer reads data from a topic, it needs to commit the offsets. Offsets are stored in a special kafka topic named *__consumer_offsets*. Consumers can choose when to commit the offsets - *At most once*, *At least once*(preferred), *Exactly Once*
 
+#### Consumer Groups
+describe consumer group and check out current offset, log-end offset, lag
+reset offsets: to earliest, shift by, 
 
 https://towardsdatascience.com/getting-started-with-apache-kafka-in-python-604b3250aa05
 https://medium.com/@durgaswaroop/a-practical-introduction-to-kafka-storage-internals-d5b544f6925f
