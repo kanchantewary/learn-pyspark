@@ -65,23 +65,14 @@ message.max.bytes
 acks=0: Producers wont wait for acknowledgement (possible data loss)
 acks=1: Producers would wait for acknowledgement from leader (limited data loss). replication is not guaranteed. if ack is not received, producer may retry.
 acks=all: Producers would wait for acknowledgement from both leader and replicas (no data loss). it must be used in conjunction with min.insync.replicas
-exception of NOT_ENOUGH_REPLICAS would be thrown
-
-3. If a topic does not exist, broker will create it first with default configuration (config/server.properties) i.e. number of partitions and replication factor. A warning will be thrown.
-
-retries
-
-max.in.flight.requests.per.connection
-
-idempotent producer
-set enable.idempotence to true
-
-compression_type - snappy,lz4,gzip
-
-linger.ms - number of ms a producer would be waiting before sending a batch out
-batch_size - max no of bytes that will be included in a batch. default is 16 KB, try setting this to 32 or 64 KB.
-buffer.memory
-max.block.ms
+exception of NOT_ENOUGH_REPLICAS would be thrown  
+3. If a topic does not exist, broker will create it first with default configuration (config/server.properties) i.e. number of partitions and replication factor. A warning will be thrown.  
+4. retries, max.in.flight.requests.per.connection - retries is set to 0 by default. It can be increased to a large value. However, this can lead to messeges sent out of order.  
+5. idempotent producer - Producer might introduce duplicate messeges into kafka due to network error(ack never reaches the producer and it retries the messege again, introducing request). set enable.idempotence to true (beyond version 0.11)  
+6. Producer compression - set compression_type to one of the following: snappy,lz4,gzip  
+7. Producer Batching - control using batch_size or linger.ms. Linger.ms is the number of ms a producer would be waiting before sending a batch out. batch_size is max no of bytes per partition that will be included in a batch. default is 16 KB, try setting this to 32 or 64 KB. Setting these would introduce a small delay, helps compression and increase throughput.  
+8. Kafka uses murmur2 algorithm to perform hasing
+9. buffer.memory (size of the send buffer, default is 32 MB). If buffer memory is full, .send() method would start to block. and max.block.ms (the time .send() would be blocked before throwing an exception)  
 
 #### Message Keys
 Producers can choose to send a key with the message. It can be anything (string, number e.g.). Kafka would ensure that all messages with a key goes to same partition (uses hashing). If key is null, round-robin partitioning is used.
