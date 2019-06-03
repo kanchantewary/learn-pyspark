@@ -1,13 +1,4 @@
 # Kafka
-Resources:  
-a. Kafka Definitive Guide  
-b. [Certification](https://medium.com/@stephane.maarek/how-to-prepare-for-the-confluent-certified-developer-for-apache-kafka-ccdak-exam-ab081994da78)
-c. [Udemy courses by Stephane](https://www.udemy.com/user/stephane-maarek/)
-
-https://towardsdatascience.com/kafka-python-explained-in-10-lines-of-code-800e3e07dad1
-https://github.com/simplesteph/kafka-beginners-course
-
-https://aseigneurin.github.io/
 
 ### Why Apache Kafka
 
@@ -86,35 +77,37 @@ try tweeting a tweet on the subject being followed, and see if it appears in rea
 stopping application, closing producer
 
 ### Kafka Consumers
-consumer will always read data in order per partition (as per offsets). However, across partitions, data may not be ordered. Each consumer within a consumer group reads from an exclusive partition. If there are more number of consumers than partitions, some consumers would be inactive.
-ConsumerCoordinator, ConsumerGroupCoordinator
-Consumers reads messeges in the order it is stored in each topic-partition
-Remember that, as long as number of partitions remain constant for a topic, the same key will always go to the same partition.
-
-#### Consumer Offsets
-When a consumer reads data from a topic, it needs to commit the offsets. Offsets are stored in a special kafka topic named *__consumer_offsets*. Consumers can choose when to commit the offsets - *At most once*, *At least once*(preferred), *Exactly Once*
-
-#### Consumer Groups
-describe consumer group and check out current offset, log-end offset, lag
+1. consumer will always read data in order per partition (as per offsets). However, across partitions, data may not be ordered. Each consumer within a consumer group reads from an exclusive partition. If there are more number of consumers than partitions, some consumers would be inactive.
+2. Each consumer in a consumer group would poll the broker (poll thread), as well as send heartbeats to ConsumerCoordinator (heartbeat thread). Rebalancing would happen if a consumer is down. 
+session_timeout_ms(default 10s) - if no hearbeat is received during this period, a consumer is considered dead
+heartbeat_interval_ms(default 3s) - how often to send heartbeats, usually 1/3rd of session_timeout_ms.
+max_poll_inerval_ms (default 5 minutes) - time between two poll events. if the application takes more time for processing, consider changing this. ConsumerGroupCoordinator
+3. Consumers reads messeges in the order it is stored in each topic-partition. Remember that, as long as number of partitions remain constant for a topic, the same key will always go to the same partition.
+4. Consumer Offsets - When a consumer reads data from a topic, it needs to commit the offsets. Offsets are stored in a special kafka topic named *__consumer_offsets*. Consumers can choose when to commit the offsets - *At most once*, *At least once*(preferred), *Exactly Once*
+5. Consumer Groups - describe consumer group and check out current offset, log-end offset, lag
 reset offsets: to earliest, shift by, 
-
 https://towardsdatascience.com/getting-started-with-apache-kafka-in-python-604b3250aa05
 https://medium.com/@durgaswaroop/a-practical-introduction-to-kafka-storage-internals-d5b544f6925f
 Refer details of kafka protocol [here](https://cwiki.apache.org/confluence/display/KAFKA/A+Guide+To+The+Kafka+Protocol)
+6. configuration - max_poll_records 
+7. enable_auto_commit = true by default. offsets would be committed automatically at regular interval(auto.commit.interval.ms=5000 or 5 seconds). This is not preferred option. Rather make it false and commit manaully in the code.
+8. auto_offset_reset (latest, earliest, none). offset.retention.minutes
+9. max_in_flight_requests_per_connection 
+10. Performance improvement using batching - 
+11. Replay - reset consumer offset
+12. topic+partition+offset can give us a generic unique id while reading using a consumer.
+13. dealing with null pointer exception
 
-configuration
-max_poll_records 
-enable_auto_commit 
-auto_offset_reset 
-max_in_flight_requests_per_connection 
-#### batching - 
-dealing with null pointer exception
-reset consumer offset
-offset.retention.minutes
 
 ### Kafka Connect
+basically reusable code for producer and consumers, for speific source and sinks. Confluent connectors, certified connectors, community connectors
+
+### Kafka Streams
+java based data processing and transformation library, contender to apache spark, flink or nifi
+supports per-record stream processing, stateful and stateless, windowing. deploy in bare metals, VMs, containers, cloud, on prem. fully integrated with kafka security. it runs inside the consumer application and not on kafka brokers.
 
 ### Schema Registry
+Kafka does not perform any data verification
 
 
 ### ElasicSearch, kibana, bonsai
@@ -134,3 +127,14 @@ log.retention.hours
 log.retention.bytes
 
 https://www.confluent.io/blog/avro-kafka-data/
+
+
+Resources:  
+a. Kafka Definitive Guide  
+b. [Certification](https://medium.com/@stephane.maarek/how-to-prepare-for-the-confluent-certified-developer-for-apache-kafka-ccdak-exam-ab081994da78)
+c. [Udemy courses by Stephane](https://www.udemy.com/user/stephane-maarek/)
+
+https://towardsdatascience.com/kafka-python-explained-in-10-lines-of-code-800e3e07dad1
+https://github.com/simplesteph/kafka-beginners-course
+
+https://aseigneurin.github.io/
