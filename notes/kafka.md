@@ -122,15 +122,41 @@ https://riccomini.name/how-paint-bike-shed-kafka-topic-naming-conventions
 
 ### Kafka cluster setup
 
+### Kafka monitoring
+under replicated partitions
+utilization of threads
+
+### Operations and maintenance tasks
+rolling restart of brokers
+updating configurations
+rebalancing partitions
+increasing replication factor
+adding a broker
+replacing a broker
+removing a broker
+upgrading a kafka cluster with zero downtime
+
+
+### Kafka security
+
+a. Authentication : SSL, SASL, Kerberos,SCRAM
+b. Encryption
+c. Authorization : Access control list or ACL
+
+### Kafka Multi Cluster - replication
+Kafka MirrorMaker - refer hortonworks best practices page
+uReplicator
+tools from confluent, comcast, netflix
+
+
 
 ### ElasicSearch, kibana, bonsai
 
 https://docs.bonsai.io/article/102-python
-
-
 http://www.zekelabs.com/
 https://github.com/zekelabs/kafka-cassandra-tutorial
 
+### Advanced Kafka
 
 log.segment.bytes
 log.segment.ms
