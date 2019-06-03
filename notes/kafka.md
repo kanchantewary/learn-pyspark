@@ -109,6 +109,19 @@ supports per-record stream processing, stateful and stateless, windowing. deploy
 ### Schema Registry
 Kafka does not perform any data verification
 
+### Choosing partition count and replication factor
+guidelines:
+number of partitions should at least match number of brokers.
+more partitions would increase parallelism, meaning more throughput
+but, more brokers mean more elections to be performed by zookeeper, more open file handles, which would be a limiting factor
+replication factor should be at least 2, usually 3, maximum 4. Never set to 1
+across all topics, a broker should not hold more than 4000 partitions (common standard, specific reason not mentioned)\
+
+topic naming conventions:
+https://riccomini.name/how-paint-bike-shed-kafka-topic-naming-conventions
+
+### Kafka cluster setup
+
 
 ### ElasicSearch, kibana, bonsai
 
