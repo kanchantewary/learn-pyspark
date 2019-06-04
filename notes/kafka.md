@@ -158,12 +158,46 @@ https://github.com/zekelabs/kafka-cassandra-tutorial
 
 ### Advanced Kafka
 
-log.segment.bytes
-log.segment.ms
-log cleanup policy
+#### Configure a topic
+add, delete or describe a topic configuration
+
+#### Partition and segments
+Topics are made of partitions, each partition is made of multiple segments. Only one segment is active at a given time (the one data is being written into). Following are two segment settings:
+log.segment.bytes (default 1GB) - max size of a single segment in bytes
+log.segment.ms (default 1 week) - the time kafka will wait before committing the segment, if not full
+segments come with two other index(files) - position index (.index) and timestamp index (.timeindex)
+
+#### Log Cleanup policies
+following are the available policies: 
+
+compact - delete based on keys of the messeges. will delete old duplicate keys after the active segment is committed. It is very useful if we are concerned about the latest information only (snapshot) and not history. issue - if log compaction is broken, restart kafka, this is a open bug
+min.cleanable.dirty.ratio
+segment.ms
+
+delete - delete based on age or size (default settings)
+log.retention.hours - default 168, i.e. one week
+log.retention.bytes - 
 log.cleanup.backoff.ms
-log.retention.hours
-log.retention.bytes
+
+#### Other notes
+
+a. min.insync.replicas - can be set at topic level (configure topic) or at the broker level (modify server.properties)
+b. unclean.leader.election - leave as default (false)
+c. launch kafka from docker
+https://github.com/simplesteph/kafka-stack-docker-compose
+d. client-broker communication
+advertised.listeners, public and private ip
+e. launch kafka in cloud
+f. kafka heap options
+g. real-time integration with databases
+use CDC connectors e.g. debezium
+
+### Use Cases
+a. movie streaming and recommendation
+b. log aggregation and monitoring
+c. big data ingestion
+d. bank transaction alert mechanism
+e. social media, trending topics
 
 https://www.confluent.io/blog/avro-kafka-data/
 
