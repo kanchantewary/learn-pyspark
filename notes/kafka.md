@@ -2,7 +2,7 @@
 
 ### Why Apache Kafka
 
-decouples data streams and systems. A traditional approach would need peer to peer integration, which would increase the number of integration points as more number of source and target systems are added in the network, increasing complexity (protocol, file format, schema evolution). We can attain horizontal scalability by adding more number of brokers. Kafka would be the data transporter in the overall system architecture.
+- decouples data streams and systems. A traditional approach would need peer to peer integration, which would increase the number of integration points as more number of source and target systems are added in the network, increasing complexity (protocol, file format, schema evolution). We can attain horizontal scalability by adding more number of brokers. Kafka would be the data transporter in the overall system architecture.
 
 ### Concepts
 
