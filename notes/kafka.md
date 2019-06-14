@@ -6,12 +6,12 @@
 
 ### Concepts
 
-Topic - stream of data. topics are split into partitions.each partition is ordered. Each messege in a partition is assigned an offset (incremental id). messeges can be stored in a topic for a finite amount of time (default is one week)
+- Topic - stream of data. topics are split into partitions.each partition is ordered. Each messege in a partition is assigned an offset (incremental id). messeges can be stored in a topic for a finite amount of time (default is one week)
 messeges in a topic are immutable (can not be updated). Data is assigned a partition randomly i.e. round-robin partitioning (if a key is not specified) or based on hashing algorithm (on the key specified).
 
-A kafka cluster consists of one or multiple brokers (servers). Brokers are identified by a numeric id
+- A kafka cluster consists of one or multiple brokers (servers). Brokers are identified by a numeric id
 
-replication factor - each partition will have one leader and multiple ISRs(In-sync replica). The broker which is the leader will receive data and serve to other replicas. A replication factor of 3 is a good idea, considering one might be taken down for maintenance, another might be down unexpectedly.
+- replication factor - each partition will have one leader and multiple ISRs(In-sync replica). The broker which is the leader will receive data and serve to other replicas. A replication factor of 3 is a good idea, considering one might be taken down for maintenance, another might be down unexpectedly.
 If a leader goes down, the replica broker becomes the leader for that partition.
 
 
@@ -19,9 +19,9 @@ See [creating multiple brokers](https://www.michael-noll.com/blog/2013/03/13/run
 
 
 ### Zookeeper configuration
-Zookeeper manages kafka brokers. It helps in performing leader election. Kafka manages all metadata in zookeeper (but not consumer offsets any more in recent kafka versions).
+- Zookeeper manages kafka brokers. It helps in performing leader election. Kafka manages all metadata in zookeeper (but not consumer offsets any more in recent kafka versions).
 
-All Kafka brokers can answer a metadata request that describes the current state of the cluster: what topics there are, which partitions those topics have, which broker is the leader for those partitions etc.
+- All Kafka brokers can answer a metadata request that describes the current state of the cluster: what topics there are, which partitions those topics have, which broker is the leader for those partitions etc.
 
 ZooKeeper is responsible for:
 
@@ -31,24 +31,24 @@ ZooKeeper is responsible for:
     Quotas - how much data is each client allowed to read and write
     ACLs - who is allowed to read and write to which topic
 
-There is regular communication between Kafka and ZooKeeper such that ZooKeeper knows a Kafka broker is still alive (ZooKeeper heartbeat mechanism) and also in response to events such as a topic being created or a replica falling out of sync for a topic-partition.
+- There is regular communication between Kafka and ZooKeeper such that ZooKeeper knows a Kafka broker is still alive (ZooKeeper heartbeat mechanism) and also in response to events such as a topic being created or a replica falling out of sync for a topic-partition.
 
-Apache Kafka uses Zookeeper to store metadata about the Kafka cluster(broker and topic metadata), as well as consumer client details (consumer metadata, partition offsets)
+- Apache Kafka uses Zookeeper to store metadata about the Kafka cluster(broker and topic metadata), as well as consumer client details (consumer metadata, partition offsets)
 config/zookeeper.properties
 
 ### Kakfa Broker Configuration
-broker.id
-port
-zookeeper.connect
-log.dirs
-num.recovery.threads.per.data.dir
-auto.create.topics.enable
-num.partitions
-log.retention.hours
-log.retention.minutes
-log.retention.ms
-log.retention.bytes
-message.max.bytes
+-broker.id
+-port
+-zookeeper.connect
+-log.dirs
+-num.recovery.threads.per.data.dir
+-auto.create.topics.enable
+-num.partitions
+-log.retention.hours
+-log.retention.minutes
+-log.retention.ms
+-log.retention.bytes
+-message.max.bytes
 
 ### Kafka Producer
 1. Producers write to data to topics (which is made up of multiple partitions). Producers automatically know to which broker and partition it should write to. In case of broker failures, producers will automatically recover.
