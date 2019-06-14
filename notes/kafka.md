@@ -37,18 +37,18 @@ ZooKeeper is responsible for:
 config/zookeeper.properties
 
 ### Kakfa Broker Configuration
--broker.id
--port
--zookeeper.connect
--log.dirs
--num.recovery.threads.per.data.dir
--auto.create.topics.enable
--num.partitions
--log.retention.hours
--log.retention.minutes
--log.retention.ms
--log.retention.bytes
--message.max.bytes
+- broker.id
+- port
+- zookeeper.connect
+- log.dirs
+- num.recovery.threads.per.data.dir
+- auto.create.topics.enable
+- num.partitions
+- log.retention.hours
+- log.retention.minutes
+- log.retention.ms
+- log.retention.bytes
+- message.max.bytes
 
 ### Kafka Producer
 1. Producers write to data to topics (which is made up of multiple partitions). Producers automatically know to which broker and partition it should write to. In case of broker failures, producers will automatically recover.
