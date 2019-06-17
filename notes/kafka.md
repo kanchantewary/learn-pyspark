@@ -218,3 +218,8 @@ https://aseigneurin.github.io/
 
 - In kafka CLI , the number of partitions is a mandatory option. The num.partitions is the default partitions for auto created topics. One thing you can do is , enable auto topic creation using prop "auto.create.topics.enable" and then whenever there is a fetch or produce request for a non-existent topic, it will be auto created with the default partitions
 
+- try producer with multiple brokers
+- explore kafka-run-class.sh, deep iteration
+
+- encryption 
+https://blog.codecentric.de/en/2016/10/transparent-end-end-security-apache-kafka-part-1/
