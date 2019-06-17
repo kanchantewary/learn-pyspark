@@ -39,7 +39,7 @@ config/zookeeper.properties
 ### Kakfa Broker Configuration
 - broker.id
 - port
-- zookeeper.connect
+- zookeeper.connect - zookeeper connection ip
 - log.dirs
 - num.recovery.threads.per.data.dir
 - auto.create.topics.enable
