@@ -37,9 +37,10 @@ ZooKeeper is responsible for:
 config/zookeeper.properties
 
 ### Kakfa Broker Configuration
-- broker.id
+- broker.id - The ID of the broker instance in a cluster
 - port
-- zookeeper.connect - zookeeper connection ip
+- zookeeper.connect - The ZooKeeper address (can list multiple addresses comma-separated for the ZooKeeper cluster). Example: localhost:2181,localhost:2182
+- zookeeper.connection.timeout.ms: Time to wait before going down if, for some reason, the broker is not able to connect
 - log.dirs
 - num.recovery.threads.per.data.dir
 - auto.create.topics.enable
@@ -211,3 +212,9 @@ https://towardsdatascience.com/kafka-python-explained-in-10-lines-of-code-800e3e
 https://github.com/simplesteph/kafka-beginners-course
 
 https://aseigneurin.github.io/
+
+
+
+
+- In kafka CLI , the number of partitions is a mandatory option. The num.partitions is the default partitions for auto created topics. One thing you can do is , enable auto topic creation using prop "auto.create.topics.enable" and then whenever there is a fetch or produce request for a non-existent topic, it will be auto created with the default partitions
+
