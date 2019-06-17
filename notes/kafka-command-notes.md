@@ -73,3 +73,7 @@ env JMX_PORT=10001 kafka-server-start.sh /usr/local/kafka/config/server2.propert
     > key,value
     > another key,another value
 `kafka-console-consumer --bootstrap-server 127.0.0.1:9092 --topic first_topic --from-beginning --property print.key=true --property key.separator=,`
+
+### Troubleshooting tips
+Faced this error during THY workshop
+https://community.hortonworks.com/content/supportkb/191865/errorfound-a-corrupted-index-file-due-to-requireme.html
